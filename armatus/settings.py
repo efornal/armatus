@@ -51,8 +51,7 @@ INSTALLED_APPS = [
     'app',
     'datetimewidget',
 ]
-
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -166,3 +165,69 @@ STATICFILES_DIRS = (
 SUIT_CONFIG = {
     'ADMIN_NAME': APPLICATION_NAME
 }
+
+# =================================\
+# ldap configuration
+LDAP_SERVER = 'ldap://ldap.intranet:389'
+LDAP_DN = 'dc=rectorado,dc=unl,dc=edu,dc=ar'
+
+# Organizational Unit for Person
+LDAP_GROUP  = 'Group' # ou=Entry
+LDAP_PEOPLE = 'People' # ou=Entry
+
+#LDAP_USERNAME = ""
+#LDAP_PASSWORD = ""
+#
+# =================================/
+
+
+# =================================\
+# django ldap configuration
+#
+#
+# Ldap Group Type
+from django_auth_ldap.config import LDAPSearch, PosixGroupType
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch("ou={},{}".format(LDAP_GROUP,LDAP_DN),
+                                    ldap.SCOPE_SUBTREE, "(objectClass=posixGroup)"
+)
+AUTH_LDAP_GROUP_TYPE =  PosixGroupType()
+#
+#
+# User will be updated with LDAP every time the user logs in.
+# Otherwise, the User will only be populated when it is automatically created.
+AUTH_LDAP_ALWAYS_UPDATE_USER = True
+#
+#
+# Simple group restrictions
+# AUTH_LDAP_REQUIRE_GROUP = "cn=users,ou={},{}".format(LDAP_GROUP,LDAP_DN)
+# AUTH_LDAP_DENY_GROUP = "cn=denygroup,ou={},{}".format(LDAP_GROUP,LDAP_DN)
+#
+# Defines the django admin attribute
+# according to whether the user is a member or not in the specified group
+AUTH_LDAP_USER_FLAGS_BY_GROUP = {
+    "is_active": "cn=users,ou={},{}".format(LDAP_GROUP,LDAP_DN),
+    "is_staff": "cn=users,ou={},{}".format(LDAP_GROUP,LDAP_DN),
+    "is_superuser": "cn=admin,ou={},{}".format(LDAP_GROUP,LDAP_DN),
+}
+#
+# Ldap User Auth
+#AUTH_LDAP_BIND_DN = "cn={},{}".format(LDAP_USERNAME,LDAP_DN)
+#AUTH_LDAP_BIND_PASSWORD = LDAP_PASSWORD
+
+AUTH_LDAP_SERVER_URI = LDAP_SERVER
+
+AUTH_LDAP_USER_SEARCH = LDAPSearch("ou={},{}".format(LDAP_PEOPLE,LDAP_DN),
+                                   ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
+AUTH_LDAP_USER_ATTR_MAP = {
+    "first_name": "givenName",
+    "last_name": "sn",
+    "email": "mail"
+}
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # must be first to register
+    'django_auth_ldap.backend.LDAPBackend', 
+)
+
+
+# =================================/
