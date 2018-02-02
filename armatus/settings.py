@@ -11,10 +11,15 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import ldap
+from django.utils.translation import ugettext_lazy as _
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_URL = "localhost:8000"
+APPLICATION_NAME= "Armatus"
+APPLICATION_DESC= "Uso de Generador"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -25,18 +30,26 @@ SECRET_KEY = '5l4#u+^9(f5ej@=@e!%@hq#xm@kaz0lf-m45z7iesu=w(fdhz9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'jquery',
+    'jquery_ui',
+    'bootstrap_ui',
+    'django_extensions',
+    'bootstrap_themes',
+    'app',
+    'datetimewidget',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'app.middleware.ForceLangMiddleware',
 ]
 
 ROOT_URLCONF = 'armatus.urls'
@@ -54,9 +69,10 @@ ROOT_URLCONF = 'armatus.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': True,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -75,9 +91,21 @@ WSGI_APPLICATION = 'armatus.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'armatus_db',
+        'USER': 'armatus_owner', ##FIXME cambiar usuario
+        'PASSWORD': 'owner',
+        'PORT': '5432',
+        'HOST': 'localhost',
+    },
+    'armatus_owner': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'armatus_db',
+        'USER': 'armatus_owner',
+        'PASSWORD': 'owner',
+        'PORT': '5432',
+        'HOST': 'localhost',
+    },
 }
 
 
@@ -102,10 +130,19 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
+LANGUAGE_CODE = 'es'
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = (
+  ('es', _('Spanish')),
+  ('en', _('English')),
+)
 
-TIME_ZONE = 'UTC'
+LOCALE_PATHS = [
+    os.path.join('/srv/armatus/shared/app/locale/'),
+    os.path.join(BASE_DIR, 'locale/'),
+]
+
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
@@ -113,8 +150,19 @@ USE_L10N = True
 
 USE_TZ = True
 
+DEFAULT_CHARSET = 'utf-8'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
+LOGIN_URL='/accounts/login/'
+
+LOGIN_REDIRECT_URL = '/'
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+# django configuration
+SUIT_CONFIG = {
+    'ADMIN_NAME': APPLICATION_NAME
+}
