@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-05 08:28-0300\n"
+"POT-Creation-Date: 2018-02-05 12:43-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,134 +17,189 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: app/forms.py:10
+msgid "empty"
+msgstr "empty"
+
+#: app/forms.py:14
+msgid "full"
+msgstr "full"
+
+#: app/forms.py:19 app/models.py:20
+msgid "start_time"
+msgstr "start time"
+
+#: app/forms.py:22 app/models.py:24
+msgid "end_time"
+msgstr "end time"
+
+#: app/forms.py:25 app/models.py:27
+msgid "operating_hours"
+msgstr "operating hours"
+
+#: app/forms.py:28 app/models.py:30
+msgid "starts"
+msgstr "starts"
+
+#: app/forms.py:31 app/models.py:33
+msgid "voltage_1"
+msgstr "V.1"
+
+#: app/forms.py:34 app/models.py:36
+msgid "voltage_2"
+msgstr "V.2"
+
+#: app/forms.py:37 app/models.py:39
+msgid "voltage_3"
+msgstr "V.3"
+
 #: app/models.py:14
 msgid "created_at"
-msgstr ""
+msgstr "created at"
 
 #: app/models.py:17
 msgid "updated_at"
-msgstr ""
+msgstr "updated at"
 
-#: app/models.py:20
-msgid "start_time"
-msgstr ""
+#: app/models.py:42
+msgid "tank"
+msgstr "tank"
 
-#: app/models.py:24
-msgid "end_time"
-msgstr ""
-
-#: app/models.py:27
-msgid "operating_hours"
-msgstr ""
-
-#: app/models.py:30
-msgid "starts"
-msgstr ""
-
-#: app/models.py:33
-msgid "voltage_1"
-msgstr ""
-
-#: app/models.py:36
-msgid "voltage_2"
-msgstr ""
-
-#: app/models.py:39
-msgid "voltage_3"
-msgstr ""
-
-#: app/models.py:43
+#: app/models.py:46
 msgid "description"
-msgstr ""
+msgstr "description"
 
-#: app/models.py:47
+#: app/models.py:50
 msgid "Check"
-msgstr ""
+msgstr "Check"
 
-#: app/models.py:48
+#: app/models.py:51
 msgid "Checks"
-msgstr ""
+msgstr "Checks"
 
-#: armatus/settings.py:137 templates/base.html:65 templates/base.html:70
+#: armatus/settings.py:137 templates/base.html:70 templates/base.html:75
 msgid "Spanish"
-msgstr ""
+msgstr "Spanish"
 
-#: armatus/settings.py:138 templates/base.html:66 templates/base.html:72
+#: armatus/settings.py:138 templates/base.html:71 templates/base.html:77
 msgid "English"
-msgstr ""
+msgstr "English"
 
-#: templates/base.html:41 templates/base.html:44 templates/base.html:58
+#: templates/base.html:46 templates/base.html:49 templates/base.html:63
 msgid "Go_home"
-msgstr ""
+msgstr "Go home"
 
-#: templates/base.html:59
+#: templates/base.html:64
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
-#: templates/base.html:63
+#: templates/base.html:68
 msgid "language"
-msgstr ""
+msgstr "language"
 
-#: templates/base.html:81 templates/base.html:97
+#: templates/base.html:86 templates/base.html:102
+#: templates/registration/login.html:38
 msgid "username"
-msgstr ""
+msgstr "username"
 
-#: templates/base.html:87
+#: templates/base.html:92
 msgid "New_check"
-msgstr ""
+msgstr "New check"
 
-#: templates/base.html:89
+#: templates/base.html:94
 msgid "See_checks"
-msgstr ""
+msgstr "See checks"
 
-#: templates/base.html:103 templates/base.html:107
+#: templates/base.html:108 templates/base.html:112
 msgid "Close_session"
-msgstr ""
+msgstr "Close session"
 
-#: templates/base.html:113
+#: templates/base.html:118 templates/registration/login.html:33
+#: templates/registration/login.html:50
 msgid "Init_session"
-msgstr ""
+msgstr "Init session"
+
+#: templates/checks/new.html:10
+msgid "Checks_request"
+msgstr "Checks request"
+
+#: templates/checks/new.html:12
+msgid "Start_title"
+msgstr "Start title"
+
+#: templates/checks/new.html:13 templates/index.html:15
+msgid "Starts"
+msgstr "Starts"
+
+#: templates/checks/new.html:21 templates/index.html:16
+msgid "Operating_hours"
+msgstr "Operating hours"
+
+#: templates/checks/new.html:47
+msgid "Voltages"
+msgstr "Voltages"
+
+#: templates/checks/new.html:71
+msgid "Tank"
+msgstr "Tank"
+
+#: templates/checks/new.html:84
+msgid "Send_application"
+msgstr "Send"
 
 #: templates/index.html:12
 msgid "Created_at"
-msgstr ""
+msgstr "Created at"
 
 #: templates/index.html:13
 msgid "Start_time"
-msgstr ""
+msgstr "Start time"
 
 #: templates/index.html:14
 msgid "End_time"
-msgstr ""
-
-#: templates/index.html:15
-msgid "Starts"
-msgstr ""
-
-#: templates/index.html:16
-msgid "Operating_hours"
-msgstr ""
+msgstr "End time"
 
 #: templates/index.html:17
 msgid "Voltage_1"
-msgstr ""
+msgstr "V.1"
 
 #: templates/index.html:18
 msgid "Voltage_2"
-msgstr ""
+msgstr "V.2"
 
 #: templates/index.html:19
 msgid "Voltage_3"
-msgstr ""
+msgstr "V.3"
 
 #: templates/index.html:43
 msgid "withouth_results"
-msgstr ""
+msgstr "withouth results"
 
 #: templates/msg_logout.html:6
 msgid "logout_message_title"
-msgstr ""
+msgstr "Bye!"
 
 #: templates/msg_logout.html:7
 msgid "logout_message"
-msgstr ""
+msgstr "Thank you for the time you spent on the website today."
+
+#: templates/registration/login.html:44
+msgid "password"
+msgstr "password"
+
+#~ msgid "email_footer"
+#~ msgstr ""
+#~ "If you have any questions, you can contact the Help DeskBest regards, \n"
+#~ "The system administration team"
+
+#~ msgid "confirmation_email"
+#~ msgstr "confirmation email"
+
+#~ msgid "Create_personal_account"
+#~ msgstr "Create personal account"
+
+#~ msgid "email"
+#~ msgstr "email"
+
+#~ msgid "confirm_password"
+#~ msgstr "confirm password"

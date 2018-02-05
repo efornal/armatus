@@ -9,5 +9,4 @@ from app.models import Check
 class CheckAdmin(admin.ModelAdmin):
     ordering = ('created_at','updated_at')
     
-    
 admin.site.register(Check,CheckAdmin)

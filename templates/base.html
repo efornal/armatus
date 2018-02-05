@@ -11,6 +11,11 @@
     <script type="text/javascript" src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap-datetimepicker.es.js' %}"></script>
 
+    <link href="{% static 'css/bootstrap-timepicker.css' %}" type="text/css" media="all" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap-timepicker.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="{% static 'js/bootstrap-timepicker.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap-timepicker.min.js' %}"></script>
+
     {% endblock %}
     {% load bootstrap_themes %}
     {% bootstrap_styles theme='spacelab' type='css' %}
@@ -83,9 +88,9 @@
                 Checks <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href=""
+                <li><a href="{% url 'checks_new' %}"
                        title="">{{ _('New_check') }}</a></li>
-                <li><a href=""
+                <li><a href="{% url 'index' %}"
                        title="">{{ _('See_checks') }}</a></li>
               </ul>
             </li>

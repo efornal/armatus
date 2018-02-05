@@ -5,16 +5,19 @@ from django.shortcuts import render
 from datetime import datetime
 from datetime import timedelta
 from .models import Check
+from .forms import CheckForm
 from django.contrib.auth.decorators import login_required
 from django.utils import translation
 import logging
 from django.shortcuts import redirect
+from django.db import transaction
+
 # Create your views here.
 
 
-def default_date_from():
-    return datetime.now().strftime('%d-%m-%Y %H:%M')
-
+#def default_operating_hours():
+#    checks = Check.objects.all()
+#    return datetime.now().strftime('%H:%M')
 
 
 def set_language(request, lang='es'):
@@ -26,20 +29,57 @@ def set_language(request, lang='es'):
     return redirect('index')
 
 
-# @login_required
-# def application_new(request):
-#     form = ApplicationForm()
-#     context = {'form': form,
-#                'date_from': default_date_from(),
-#                'date_until': default_date_until()}
-#     return render(request, 'application/new.html', context)
+@login_required
+def checks_new(request):
+    latest_check = Check.objects.latest('created_at')
+    defaults = {
+        'tank': latest_check.tank,
+        'operating_hours': latest_check.operating_hours,
+        'starts':latest_check.starts+1,
+        'voltage_1': latest_check.voltage_1,
+        'voltage_2': latest_check.voltage_2,
+        'voltage_3': latest_check.voltage_3
+    }
+    form = CheckForm(initial=defaults)
+    
+    context = {'form': form,}
+    return render(request, 'checks/new.html', context)
 
 
-# @login_required
-# def application_list(request):
-#     applications = Application.objects.filter(user=request.user.pk)
-#     context = {'applications': applications}
-#     return render(request, 'application/index.html', context)
+def sanitize_checks_create_params(request):
+    params = request.POST.copy()
+    try:
+        if 'start_time' in params:
+            params.update({'start_time': unicode(datetime.now().strftime('%H:%M'))})
+    except Exception, e:
+        logging.error('ERROR Exception',e)
+    logging.warning(params)
+    return params
+
+
+@login_required
+def checks_create(request):
+#    params = sanitize_checks_create_params(request)
+    params= request.POST.copy()
+    logging.error(params)
+    form = CheckForm(params)
+    context = {}
+
+    if form.is_valid():
+        context.update({'form': form,})
+        try:
+            logging.warning("creating new check..")
+            check = form.save()
+            return redirect('index')
+        except Exception as e:
+            logging.error(e)
+    else:
+        logging.warning("ERROR creating new check..")
+        logging.error(form.errors)
+        context.update({'form': form,})
+
+    return render(request, 'checks/new.html', context)
+
 
 
 # @login_required

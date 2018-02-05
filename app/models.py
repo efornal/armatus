@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
+from datetime import datetime
 # Create your models here.
 class Check(models.Model):
     id = models.AutoField(
@@ -16,6 +16,7 @@ class Check(models.Model):
         auto_now=True,
         verbose_name=_('updated_at'))
     start_time = models.TimeField(
+        default=datetime.now().strftime('%H:%M'),
         null=False,
         verbose_name=_('start_time'))
     end_time = models.TimeField(
@@ -37,6 +38,9 @@ class Check(models.Model):
     voltage_3 = models.IntegerField(
         null=False,
         verbose_name=_('voltage_3'))
+    tank = models.TextField(
+        null=False,
+        verbose_name=_('tank'))
     observation = models.TextField(
         null=True,
         blank=True,
