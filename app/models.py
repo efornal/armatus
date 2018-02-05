@@ -48,4 +48,4 @@ class Check(models.Model):
         verbose_name_plural = _('Checks')
 
     def __unicode__(self):
-        return self.created_at
+        return unicode(format(self.created_at, "%d-%m-%Y, %H:%S"))

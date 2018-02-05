@@ -13,8 +13,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import ldap
 from django.utils.translation import ugettext_lazy as _
+from django.conf.locale.es import formats as es_formats
 
-
+es_formats.DATETIME_FORMAT = "d-m-Y H:i"
+    
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_URL = "localhost:8000"

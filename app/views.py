@@ -4,8 +4,11 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from datetime import datetime
 from datetime import timedelta
+from .models import Check
 from django.contrib.auth.decorators import login_required
-
+from django.utils import translation
+import logging
+from django.shortcuts import redirect
 # Create your views here.
 
 
@@ -50,4 +53,6 @@ def set_language(request, lang='es'):
 @login_required
 def index(request):
     context={}
+    checks = Check.objects.all()
+    context = {'checks': checks}
     return render(request, 'index.html', context)
