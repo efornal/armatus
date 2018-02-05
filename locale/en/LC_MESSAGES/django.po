@@ -1,0 +1,150 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-05 08:28-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app/models.py:14
+msgid "created_at"
+msgstr ""
+
+#: app/models.py:17
+msgid "updated_at"
+msgstr ""
+
+#: app/models.py:20
+msgid "start_time"
+msgstr ""
+
+#: app/models.py:24
+msgid "end_time"
+msgstr ""
+
+#: app/models.py:27
+msgid "operating_hours"
+msgstr ""
+
+#: app/models.py:30
+msgid "starts"
+msgstr ""
+
+#: app/models.py:33
+msgid "voltage_1"
+msgstr ""
+
+#: app/models.py:36
+msgid "voltage_2"
+msgstr ""
+
+#: app/models.py:39
+msgid "voltage_3"
+msgstr ""
+
+#: app/models.py:43
+msgid "description"
+msgstr ""
+
+#: app/models.py:47
+msgid "Check"
+msgstr ""
+
+#: app/models.py:48
+msgid "Checks"
+msgstr ""
+
+#: armatus/settings.py:137 templates/base.html:65 templates/base.html:70
+msgid "Spanish"
+msgstr ""
+
+#: armatus/settings.py:138 templates/base.html:66 templates/base.html:72
+msgid "English"
+msgstr ""
+
+#: templates/base.html:41 templates/base.html:44 templates/base.html:58
+msgid "Go_home"
+msgstr ""
+
+#: templates/base.html:59
+msgid "Home"
+msgstr ""
+
+#: templates/base.html:63
+msgid "language"
+msgstr ""
+
+#: templates/base.html:81 templates/base.html:97
+msgid "username"
+msgstr ""
+
+#: templates/base.html:87
+msgid "New_check"
+msgstr ""
+
+#: templates/base.html:89
+msgid "See_checks"
+msgstr ""
+
+#: templates/base.html:103 templates/base.html:107
+msgid "Close_session"
+msgstr ""
+
+#: templates/base.html:113
+msgid "Init_session"
+msgstr ""
+
+#: templates/index.html:12
+msgid "Created_at"
+msgstr ""
+
+#: templates/index.html:13
+msgid "Start_time"
+msgstr ""
+
+#: templates/index.html:14
+msgid "End_time"
+msgstr ""
+
+#: templates/index.html:15
+msgid "Starts"
+msgstr ""
+
+#: templates/index.html:16
+msgid "Operating_hours"
+msgstr ""
+
+#: templates/index.html:17
+msgid "Voltage_1"
+msgstr ""
+
+#: templates/index.html:18
+msgid "Voltage_2"
+msgstr ""
+
+#: templates/index.html:19
+msgid "Voltage_3"
+msgstr ""
+
+#: templates/index.html:43
+msgid "withouth_results"
+msgstr ""
+
+#: templates/msg_logout.html:6
+msgid "logout_message_title"
+msgstr ""
+
+#: templates/msg_logout.html:7
+msgid "logout_message"
+msgstr ""
