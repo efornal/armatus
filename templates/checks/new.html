@@ -12,7 +12,7 @@
       <div class="form-group" title="{{ _('Start_title') }}">
         <label class="col-sm-2 control-label" for="id_starts">{{ _('Starts') }}</label>
         <div class="col-sm-4">
-          <input class="form-control" type="text" name="starts" id="id_starts"
+          <input class="form-control" type="number" name="starts" id="id_starts"
                  value="{{ form.starts.value|default:'' }}"/>
         </div>
       </div>
@@ -47,21 +47,21 @@
         <label class="col-sm-2 control-label" for="id_date_from">{{ _('Voltages') }}</label>
         <div class="col-sm-1">
           <div class="input-group" >
-            <input class="form-control" type="text" name="voltage_1" id="id_voltage_1"
+            <input class="form-control" type="number" name="voltage_1" id="id_voltage_1"
                    value="{{ form.voltage_1.value|default:'' }}"/>
           </div>
         </div>
         <label class="control-label"></label>
         <div class="col-sm-1">
           <div class="input-group">
-            <input class="form-control" type="text" name="voltage_2" id="id_voltage_2"
+            <input class="form-control" type="number" name="voltage_2" id="id_voltage_2"
                    value="{{ form.voltage_2.value|default:'' }}"/>
           </div>
         </div>
         <label class="control-label"></label>
         <div class="col-sm-1">
           <div class="input-group">
-            <input class="form-control" type="text" name="voltage_3" id="id_voltage_3"
+            <input class="form-control" type="number" name="voltage_3" id="id_voltage_3"
                    value="{{ form.voltage_3.value|default:'' }}"/>
           </div>
         </div>

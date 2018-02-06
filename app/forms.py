@@ -1,0 +1,57 @@
+# -*- coding: utf-8 -*-
+from django import forms
+import logging
+from .models import Check
+from datetimewidget.widgets import DateTimeWidget
+from django.utils.translation import ugettext as _
+from django.conf import settings
+from datetime import datetime
+
+
+CHOICES = (
+    ('0', _('empty')),
+    ('0.125', '1/8',),
+    ('0.25', '1/4',),
+    ('0.375', '3/8',),
+    ('0.5', '1/2',),
+    ('0.625', '5/8',),
+    ('0.375', '3/4',),
+    ('0.875', '7/8',),
+    ('1', _('full')))
+
+
+class CheckForm(forms.ModelForm):
+    start_time = forms.TimeField(
+        required=False,
+        label=_('start_time'))
+    end_time = forms.TimeField(
+        required=False,
+        label=_('end_time'))
+    operating_hours = forms.TimeField(
+        required=True,
+        label=_('operating_hours'))
+    starts = forms.IntegerField(
+        required=True,
+        label=_('starts'))
+    voltage_1 = forms.IntegerField(
+        required=True,
+        label=_('voltage_1'))
+    voltage_2 = forms.IntegerField(
+        required=True,
+        label=_('voltage_2'))
+    voltage_3 = forms.IntegerField(
+        required=True,
+        label=_('voltage_3'))
+    tank = forms.MultipleChoiceField(
+        required=True,
+        widget=forms.CheckboxSelectMultiple,
+        choices=CHOICES,
+    )
+
+    def clean(self):
+        cleaned_data = super(CheckForm, self).clean()
+
+    class Meta:
+        model = Check
+        fields = ('start_time', 'end_time', 'operating_hours','starts','tank',
+                  'voltage_1','voltage_2','voltage_3')
