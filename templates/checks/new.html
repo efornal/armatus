@@ -72,6 +72,7 @@
         <div class="col-sm-4">
           <select class="form-control" name="tank" id="id_tank" style="margin-bottom: 5px;" >
             {% for choice in form.tank.field.choices %}
+
             <option value="{{choice.0}}" {% if choice.0|stringformat:"s" == form.tank.value %}selected=''{% endif %}>{{ choice.1}}</option>{% endfor %}
           </select>
           <small id="id_complete_resource" class="form-text text-muted">&nbsp;</small>

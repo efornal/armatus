@@ -16,10 +16,6 @@ from django.utils.translation import ugettext as _
 # Create your views here.
 
 
-#def default_operating_hours():
-#    checks = Check.objects.all()
-#    return datetime.now().strftime('%H:%M')
-
 
 def set_language(request, lang='es'):
     if 'lang' in request.GET:
@@ -33,8 +29,12 @@ def set_language(request, lang='es'):
 @login_required
 def checks_new(request):
     latest_check = Check.objects.latest('created_at')
+    clean_tank_value = latest_check.tank.replace('[','') \
+                                        .replace(']','') \
+                                        .replace('u','') \
+                                        .replace("'","") 
     defaults = {
-        'tank': latest_check.tank,
+        'tank': clean_tank_value,
         'operating_hours': latest_check.operating_hours,
         'starts':latest_check.starts+1,
         'voltage_1': latest_check.voltage_1,
