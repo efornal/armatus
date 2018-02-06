@@ -6,6 +6,7 @@ from datetimewidget.widgets import DateTimeWidget
 from django.utils.translation import ugettext as _
 from django.conf import settings
 from datetime import datetime
+from django.contrib.auth.models import User
 
 
 CHOICES = (
@@ -47,6 +48,11 @@ class CheckForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         choices=CHOICES,
     )
+    user = forms.ModelChoiceField(
+        queryset=User.objects.all(),
+        to_field_name = "id",
+        required = True,
+        label=_('user'))
 
     def clean(self):
         cleaned_data = super(CheckForm, self).clean()
@@ -54,4 +60,4 @@ class CheckForm(forms.ModelForm):
     class Meta:
         model = Check
         fields = ('start_time', 'end_time', 'operating_hours','starts','tank',
-                  'voltage_1','voltage_2','voltage_3')
+                  'voltage_1','voltage_2','voltage_3','user')

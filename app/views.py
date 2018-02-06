@@ -13,6 +13,7 @@ from django.shortcuts import redirect
 from django.db import transaction
 from django.contrib import messages
 from django.utils.translation import ugettext as _
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 
@@ -28,21 +29,26 @@ def set_language(request, lang='es'):
 
 @login_required
 def checks_new(request):
-    latest_check = Check.objects.latest('created_at')
-    clean_tank_value = latest_check.tank.replace('[','') \
-                                        .replace(']','') \
-                                        .replace('u','') \
-                                        .replace("'","") 
-    defaults = {
-        'tank': clean_tank_value,
-        'operating_hours': latest_check.operating_hours,
-        'starts':latest_check.starts+1,
-        'voltage_1': latest_check.voltage_1,
-        'voltage_2': latest_check.voltage_2,
-        'voltage_3': latest_check.voltage_3
-    }
-    form = CheckForm(initial=defaults)
-    
+    try:
+        latest_check = Check.objects.latest('created_at')
+        clean_tank_value = latest_check.tank.replace('[','') \
+                                            .replace(']','') \
+                                            .replace('u','') \
+                                            .replace("'","") 
+        defaults = {
+            'tank': clean_tank_value,
+            'operating_hours': latest_check.operating_hours,
+            'starts':latest_check.starts+1,
+            'voltage_1': latest_check.voltage_1,
+            'voltage_2': latest_check.voltage_2,
+            'voltage_3': latest_check.voltage_3
+        }
+        form = CheckForm(initial=defaults)
+    except ObjectDoesNotExist, e:
+        form = CheckForm()
+    except Exception, e:
+        logging.error('ERROR Exception',e)
+
     context = {'form': form,}
     return render(request, 'checks/new.html', context)
 
@@ -50,17 +56,15 @@ def checks_new(request):
 def sanitize_checks_create_params(request):
     params = request.POST.copy()
     try:
-        if 'start_time' in params:
-            params.update({'start_time': unicode(datetime.now().strftime('%H:%M'))})
+        params['user'] = request.user.pk
     except Exception, e:
         logging.error('ERROR Exception',e)
-    logging.warning(params)
     return params
 
 
 @login_required
 def checks_create(request):
-    params= request.POST.copy()
+    params = sanitize_checks_create_params(request)
     form = CheckForm(params)
     context = {}
 

@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from datetime import datetime
-# Create your models here.
+
+
 class Check(models.Model):
     id = models.AutoField(
         primary_key=True,
         null=False)
+    user = models.ForeignKey(
+        User,
+        null=False,
+        default=None,
+        verbose_name=_('user'))
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name=_('created_at'))
