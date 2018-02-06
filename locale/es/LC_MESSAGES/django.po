@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-05 12:43-0300\n"
+"POT-Creation-Date: 2018-02-06 11:24-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,39 +18,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: app/forms.py:10
+#: app/forms.py:12
 msgid "empty"
 msgstr "Vacío"
 
-#: app/forms.py:14
+#: app/forms.py:20
 msgid "full"
 msgstr "Completo"
 
-#: app/forms.py:19 app/models.py:20
+#: app/forms.py:26 app/models.py:21
 msgid "start_time"
 msgstr "inicio"
 
-#: app/forms.py:22 app/models.py:24
+#: app/forms.py:29 app/models.py:25
 msgid "end_time"
 msgstr "fin"
 
-#: app/forms.py:25 app/models.py:27
+#: app/forms.py:32 app/models.py:28
 msgid "operating_hours"
 msgstr "horas de función"
 
-#: app/forms.py:28 app/models.py:30
+#: app/forms.py:35 app/models.py:31
 msgid "starts"
 msgstr "arranques"
 
-#: app/forms.py:31 app/models.py:33
+#: app/forms.py:38 app/models.py:34
 msgid "voltage_1"
 msgstr "voltage 1"
 
-#: app/forms.py:34 app/models.py:36
+#: app/forms.py:41 app/models.py:37
 msgid "voltage_2"
 msgstr "voltage 2"
 
-#: app/forms.py:37 app/models.py:39
+#: app/forms.py:44 app/models.py:40
 msgid "voltage_3"
 msgstr "voltage 3"
 
@@ -62,21 +62,25 @@ msgstr "creado"
 msgid "updated_at"
 msgstr "actualizado"
 
-#: app/models.py:42
+#: app/models.py:43
 msgid "tank"
 msgstr "Tanque"
 
-#: app/models.py:46
+#: app/models.py:47
 msgid "description"
 msgstr "descripción"
 
-#: app/models.py:50
+#: app/models.py:51
 msgid "Check"
 msgstr "verificación"
 
-#: app/models.py:51
+#: app/models.py:52
 msgid "Checks"
 msgstr "verificaciones"
+
+#: app/views.py:72
+msgid "msg_check_created"
+msgstr "La nueva verificación se agregó correctamente"
 
 #: armatus/settings.py:137 templates/base.html:70 templates/base.html:75
 msgid "Spanish"
@@ -124,29 +128,51 @@ msgstr "Iniciar sesión"
 msgid "Checks_request"
 msgstr "Nueva verificación"
 
-#: templates/checks/new.html:12
+#: templates/checks/new.html:12 templates/checks/show.html:11
 msgid "Start_title"
 msgstr "Inicio"
 
-#: templates/checks/new.html:13 templates/index.html:15
+#: templates/checks/new.html:13 templates/checks/show.html:12
+#: templates/checks/show.html:44 templates/index.html:15
 msgid "Starts"
 msgstr "Arranques"
 
-#: templates/checks/new.html:21 templates/index.html:16
+#: templates/checks/new.html:21 templates/checks/show.html:21
+#: templates/index.html:16
 msgid "Operating_hours"
 msgstr "Horas de operación"
 
-#: templates/checks/new.html:47
+#: templates/checks/new.html:47 templates/checks/show.html:61
 msgid "Voltages"
 msgstr "Voltajes"
 
-#: templates/checks/new.html:71
+#: templates/checks/new.html:71 templates/checks/show.html:85
 msgid "Tank"
 msgstr "Tanque"
 
 #: templates/checks/new.html:84
 msgid "Send_application"
 msgstr "Guardar"
+
+#: templates/checks/show.html:9
+msgid "Checks_show"
+msgstr "Ver verificaciones"
+
+#: templates/checks/show.html:34
+msgid "Date"
+msgstr "Fecha"
+
+#: templates/checks/show.html:51
+msgid "End"
+msgstr "Fin"
+
+#: templates/checks/show.html:96 templates/checks/show.html:97
+msgid "Observations"
+msgstr "Observaciones"
+
+#: templates/checks/show.html:108
+msgid "Back"
+msgstr "Volver"
 
 #: templates/index.html:12
 msgid "Created_at"
@@ -172,7 +198,11 @@ msgstr "V.2"
 msgid "Voltage_3"
 msgstr "V.3"
 
-#: templates/index.html:43
+#: templates/index.html:33
+msgid "Finalize"
+msgstr "Finalizar"
+
+#: templates/index.html:53
 msgid "withouth_results"
 msgstr "Sin resultados"
 

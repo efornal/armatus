@@ -11,7 +11,8 @@ from django.utils import translation
 import logging
 from django.shortcuts import redirect
 from django.db import transaction
-
+from django.contrib import messages
+from django.utils.translation import ugettext as _
 # Create your views here.
 
 
@@ -59,9 +60,7 @@ def sanitize_checks_create_params(request):
 
 @login_required
 def checks_create(request):
-#    params = sanitize_checks_create_params(request)
     params= request.POST.copy()
-    logging.error(params)
     form = CheckForm(params)
     context = {}
 
@@ -70,6 +69,7 @@ def checks_create(request):
         try:
             logging.warning("creating new check..")
             check = form.save()
+            messages.info(request, _('msg_check_created'))
             return redirect('index')
         except Exception as e:
             logging.error(e)
@@ -81,18 +81,34 @@ def checks_create(request):
     return render(request, 'checks/new.html', context)
 
 
+@login_required
+def checks_show(request, pk):
+    check = Check.objects.get(pk=pk)
+    form = CheckForm(instance=check)
+    clean_tank_value = check.tank.replace('[','') \
+                                 .replace(']','') \
+                                 .replace('u','') \
+                                 .replace("'","") 
+    logging.error(clean_tank_value)
+    context = {'check': check, 'form': form, 'clean_tank_value': clean_tank_value}
+    return render(request, 'checks/show.html', context)
 
-# @login_required
-# def application_show(request, pk):
-#     application = Application.objects.get(pk=pk)
-#     form = ApplicationForm(instance=application)
-#     context = {'application': application, 'form': form}
-#     return render(request, 'application/show.html', context)
-
+@login_required
+def checks_finalize(request, pk):
+    try:
+        check = Check.objects.get(pk=pk)
+        if not check.end_time:
+            check.end_time = unicode(datetime.now().strftime('%H:%M'))
+            check.save(update_fields=["end_time"])
+        else:
+            logging.error('The check {} has already been finalized'.format(pk))
+    except Exception as e:
+        logging.error(e)
+    return redirect('index')
 
 @login_required
 def index(request):
     context={}
-    checks = Check.objects.all()
+    checks = Check.objects.all().order_by('-created_at')
     context = {'checks': checks}
     return render(request, 'index.html', context)

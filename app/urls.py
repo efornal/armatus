@@ -13,5 +13,7 @@ urlpatterns = [
     url(r'^lang/(?P<lang>\w+)/$', views.set_language, name='set_language'),
     url(r'^checks/new/$', views.checks_new, name='checks_new'),
     url(r'^checks/create/$', views.checks_create, name='checks_create'),
+    url(r'^checks/finalize/(?P<pk>\d+)/$', views.checks_finalize, name='checks_finalize'),
+    url(r'^checks/show/(?P<pk>\d+)/$', views.checks_show, name='checks_show'),
     url(r'^$', views.index, name='index'),
 ]

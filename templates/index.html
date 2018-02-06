@@ -21,10 +21,20 @@
       </thead>
       <tbody>
         {% if checks %} {% for check in checks %}
-        <tr title="{{ check.observation|default:'' }}">
-          <td><a href="" >{{ check.created_at|default:'' }}<a/></td>
+        <tr>
+          <td title="{{ check.observation|default:'' }}">
+            <a href="{% url 'checks_show' check.pk %}" >{{ check.created_at|default:'' }}<a/>
+          </td>
           <td>{{ check.start_time|date:'H:i'|default:'' }} </td>
-          <td>{{ check.end_time|date:'H:i'|default:'' }} </td>
+          <td>
+            {% if check.end_time %} 
+              {{ check.end_time|date:'H:i'|default:'' }}
+            {% else %}
+            <a href="{% url 'checks_finalize' check.pk %}" title="{{ _('Finalize') }}">
+              <i class="glyphicon glyphicon-exclamation-sign"></i>
+            </a>
+            {% endif %} 
+          </td>
           <td>{{ check.starts|default:'' }} </td>
           <td>{{ check.operating_hours|default:'' }} </td>
           <td title="{{ check.voltage_1|default:'' }} ">

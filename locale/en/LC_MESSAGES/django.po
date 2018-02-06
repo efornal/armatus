@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-05 12:43-0300\n"
+"POT-Creation-Date: 2018-02-06 11:24-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,39 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: app/forms.py:10
+#: app/forms.py:12
 msgid "empty"
 msgstr "empty"
 
-#: app/forms.py:14
+#: app/forms.py:20
 msgid "full"
 msgstr "full"
 
-#: app/forms.py:19 app/models.py:20
+#: app/forms.py:26 app/models.py:21
 msgid "start_time"
 msgstr "start time"
 
-#: app/forms.py:22 app/models.py:24
+#: app/forms.py:29 app/models.py:25
 msgid "end_time"
 msgstr "end time"
 
-#: app/forms.py:25 app/models.py:27
+#: app/forms.py:32 app/models.py:28
 msgid "operating_hours"
 msgstr "operating hours"
 
-#: app/forms.py:28 app/models.py:30
+#: app/forms.py:35 app/models.py:31
 msgid "starts"
 msgstr "starts"
 
-#: app/forms.py:31 app/models.py:33
+#: app/forms.py:38 app/models.py:34
 msgid "voltage_1"
 msgstr "V.1"
 
-#: app/forms.py:34 app/models.py:36
+#: app/forms.py:41 app/models.py:37
 msgid "voltage_2"
 msgstr "V.2"
 
-#: app/forms.py:37 app/models.py:39
+#: app/forms.py:44 app/models.py:40
 msgid "voltage_3"
 msgstr "V.3"
 
@@ -61,21 +61,25 @@ msgstr "created at"
 msgid "updated_at"
 msgstr "updated at"
 
-#: app/models.py:42
+#: app/models.py:43
 msgid "tank"
 msgstr "tank"
 
-#: app/models.py:46
+#: app/models.py:47
 msgid "description"
 msgstr "description"
 
-#: app/models.py:50
+#: app/models.py:51
 msgid "Check"
 msgstr "Check"
 
-#: app/models.py:51
+#: app/models.py:52
 msgid "Checks"
 msgstr "Checks"
+
+#: app/views.py:72
+msgid "msg_check_created"
+msgstr "The new verification was added correctly"
 
 #: armatus/settings.py:137 templates/base.html:70 templates/base.html:75
 msgid "Spanish"
@@ -123,29 +127,51 @@ msgstr "Init session"
 msgid "Checks_request"
 msgstr "Checks request"
 
-#: templates/checks/new.html:12
+#: templates/checks/new.html:12 templates/checks/show.html:11
 msgid "Start_title"
 msgstr "Start title"
 
-#: templates/checks/new.html:13 templates/index.html:15
+#: templates/checks/new.html:13 templates/checks/show.html:12
+#: templates/checks/show.html:44 templates/index.html:15
 msgid "Starts"
 msgstr "Starts"
 
-#: templates/checks/new.html:21 templates/index.html:16
+#: templates/checks/new.html:21 templates/checks/show.html:21
+#: templates/index.html:16
 msgid "Operating_hours"
 msgstr "Operating hours"
 
-#: templates/checks/new.html:47
+#: templates/checks/new.html:47 templates/checks/show.html:61
 msgid "Voltages"
 msgstr "Voltages"
 
-#: templates/checks/new.html:71
+#: templates/checks/new.html:71 templates/checks/show.html:85
 msgid "Tank"
 msgstr "Tank"
 
 #: templates/checks/new.html:84
 msgid "Send_application"
 msgstr "Send"
+
+#: templates/checks/show.html:9
+msgid "Checks_show"
+msgstr "Show checks"
+
+#: templates/checks/show.html:34
+msgid "Date"
+msgstr "Date"
+
+#: templates/checks/show.html:51
+msgid "End"
+msgstr "End"
+
+#: templates/checks/show.html:96 templates/checks/show.html:97
+msgid "Observations"
+msgstr "Observations"
+
+#: templates/checks/show.html:108
+msgid "Back"
+msgstr "Back"
 
 #: templates/index.html:12
 msgid "Created_at"
@@ -171,7 +197,11 @@ msgstr "V.2"
 msgid "Voltage_3"
 msgstr "V.3"
 
-#: templates/index.html:43
+#: templates/index.html:33
+msgid "Finalize"
+msgstr "Finalize"
+
+#: templates/index.html:53
 msgid "withouth_results"
 msgstr "withouth results"
 
@@ -186,20 +216,3 @@ msgstr "Thank you for the time you spent on the website today."
 #: templates/registration/login.html:44
 msgid "password"
 msgstr "password"
-
-#~ msgid "email_footer"
-#~ msgstr ""
-#~ "If you have any questions, you can contact the Help DeskBest regards, \n"
-#~ "The system administration team"
-
-#~ msgid "confirmation_email"
-#~ msgstr "confirmation email"
-
-#~ msgid "Create_personal_account"
-#~ msgstr "Create personal account"
-
-#~ msgid "email"
-#~ msgstr "email"
-
-#~ msgid "confirm_password"
-#~ msgstr "confirm password"

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+
+    
+<div class="well bs-component">
+  <form class="form-horizontal" action="{% url 'index' %}" method="get">
+    <fieldset>
+      <legend>{{ _('Checks_show') }}</legend>
+            
+      <div class="form-group" title="{{ _('Start_title') }}">
+        <label class="col-sm-2 control-label" for="id_starts">{{ _('Starts') }}</label>
+        <div class="col-sm-2">
+          <input class="form-control" type="text" name="starts" id="id_starts"
+                 value="{{ form.starts.value|default:'' }}" readonly="" />
+        </div>
+      </div>
+
+      
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="id_operating_hours">{{ _('Operating_hours') }}</label>
+        <div class="col-sm-2">
+          <div class="input-group" >
+            <span class="input-group-addon" id="basic-addon1" >
+              <span class="glyphicon glyphicon-time" id="id_operating_hours_icon" aria-hidden="true"></span>
+            </span>
+            <input class="form-control" type="text" name="operating_hours" id="id_operating_hours"
+                   value="{{ form.operating_hours.value|default:'' }}" readonly="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="id_date_from">{{ _('Date') }}</label>
+        <div class="col-sm-2">
+          <div class="input-group" >
+            <input class="form-control" type="text" name="voltage_1" id="id_voltage_1"
+                   value="{{ check.created_at|default:'' }}"  readonly=""/>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">      
+        <label class="control-label col-sm-2">{{ _('Starts') }}</label>
+        <div class="col-sm-1">
+          <div class="input-group">
+            <input class="form-control" type="text" name="voltage_2" id="id_voltage_2"
+                   value="{{ check.start_time|default:'' }}"  readonly=""/>
+          </div>
+        </div>
+        <label class="control-label col-sm-1">{{ _('End') }}</label>
+        <div class="col-sm-1">
+          <div class="input-group">
+            <input class="form-control" type="text" name="voltage_3" id="id_voltage_3"
+                   value="{{ check.end_time|default:'' }}"  readonly=""/>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="id_date_from">{{ _('Voltages') }}</label>
+        <div class="col-sm-1">
+          <div class="input-group" >
+            <input class="form-control" type="text" name="voltage_1" id="id_voltage_1"
+                   value="{{ form.voltage_1.value|default:'' }}"  readonly=""/>
+          </div>
+        </div>
+        <label class="control-label"></label>
+        <div class="col-sm-1">
+          <div class="input-group">
+            <input class="form-control" type="text" name="voltage_2" id="id_voltage_2"
+                   value="{{ form.voltage_2.value|default:'' }}"  readonly=""/>
+          </div>
+        </div>
+        <label class="control-label"></label>
+        <div class="col-sm-1">
+          <div class="input-group">
+            <input class="form-control" type="text" name="voltage_3" id="id_voltage_3"
+                   value="{{ form.voltage_3.value|default:'' }}"  readonly=""/>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="id_tank">{{ _('Tank') }}</label>
+        <div class="col-sm-4">
+          {% for choice in form.tank.field.choices %}
+          {% if choice.0 == clean_tank_value %}
+          <input class="form-control" type="text" name="voltage_3" id="id_voltage_3"
+                 value="{{ choice.1|default:'' }}"  readonly=""/>
+          {% endif %}{% endfor %}
+          <small id="id_complete_resource" class="form-text text-muted">&nbsp;</small>
+        </div>
+      </div>
+
+      <div class="form-group" title="{{ _('Observations') }}">
+        <label class="col-sm-2 control-label" for="id_objectives">{{ _('Observations') }}</label>
+        <div class="col-sm-6">
+          <textarea class="form-control " name="observations" id="id_observations"
+                    rows="5" readonly="">
+            {{ check.observations|default:'' }}</textarea>
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group pull-right">
+        <div class="col-xs-12">
+          <a class="btn btn-primary" href="{% url 'index' %}" role="button">{{ _('Back') }}</a>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+
+{% endblock %}
+
