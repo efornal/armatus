@@ -19,18 +19,18 @@ es_formats.DATETIME_FORMAT = "d-m-Y H:i"
     
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_URL = "localhost:8000"
-APPLICATION_NAME= "Armatus"
-APPLICATION_DESC= "Uso de Generador"
+BASE_URL = "{{ app_base_url }}{{ app_url }}"
+APPLICATION_NAME= "{{ app_title|capitalize }}"
+APPLICATION_DESC= "{{ app_desc|capitalize }}"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5l4#u+^9(f5ej@=@e!%@hq#xm@kaz0lf-m45z7iesu=w(fdhz9'
+SECRET_KEY = '{{ django_secret_key }}'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = {{ app_debug }}
 
 ALLOWED_HOSTS = ['*']
 
@@ -70,10 +70,10 @@ ROOT_URLCONF = 'armatus.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
-            'debug': True,
+            'debug': {{ app_debug }},
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -93,19 +93,19 @@ WSGI_APPLICATION = 'armatus.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'armatus_db',
-        'USER': 'armatus_owner', ##FIXME cambiar usuario
-        'PASSWORD': 'owner',
-        'PORT': '5432',
-        'HOST': 'localhost',
+        'NAME': '{{ db_name }}',
+        'USER': '{{ db_user }}',
+        'PASSWORD': '{{ db_user_password }}',
+        'PORT': '{{ db_port }}',
+        'HOST': '{{ db_host }}',
     },
-    'armatus_owner': {
+    '{{ db_owner }}': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'armatus_db',
-        'USER': 'armatus_owner',
-        'PASSWORD': 'owner',
-        'PORT': '5432',
-        'HOST': 'localhost',
+        'NAME': '{{ db_name }}',
+        'USER': '{{ db_owner }}',
+        'PASSWORD': '{{ db_owner_password }}',
+        'PORT': '{{ db_port }}',
+        'HOST': '{{ db_host }}',
     },
 }
 
@@ -153,11 +153,14 @@ USE_TZ = True
 
 DEFAULT_CHARSET = 'utf-8'
 
-LOGIN_URL='/login/'
+LOGIN_URL = "{{ app_login_url }}"
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "{{ app_login_redirect_url }}"
 
-STATIC_URL = '/static/'
+{% if app_static_root %}
+STATIC_ROOT = "{{ app_static_root }}"
+{% endif %}
+STATIC_URL="{{ app_static_url }}"
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
@@ -170,12 +173,12 @@ SUIT_CONFIG = {
 
 # =================================\
 # ldap configuration
-LDAP_SERVER = 'ldap://ldap.intranet:389'
-LDAP_DN = 'dc=rectorado,dc=unl,dc=edu,dc=ar'
+LDAP_SERVER = "{{ ldap_server }}"
+LDAP_DN = "{{ ldap_dn }}"
 
 # Organizational Unit for Person
-LDAP_GROUP  = 'Group' # ou=Entry
-LDAP_PEOPLE = 'People' # ou=Entry
+LDAP_PEOPLE = "{{ ldap_people }}"
+LDAP_GROUP  = "{{ ldap_group }}"
 
 #LDAP_USERNAME = ""
 #LDAP_PASSWORD = ""
