@@ -28,7 +28,7 @@ class Check(models.Model):
         null=True,
         blank=True,
         verbose_name=_('end_time'))
-    operating_hours = models.TimeField(
+    operating_hours = models.DurationField(
         null=False,
         verbose_name=_('operating_hours'))
     starts = models.IntegerField(

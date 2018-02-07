@@ -33,12 +33,13 @@
       <script type="text/javascript">
         $("#id_operating_hours").timepicker({
                 minuteStep: 1,
-                template: 'dropdown',
+                template: dropdown,
+                maxHours:1000,
                 appendWidgetTo: 'body',
-                showSeconds: true,
+                showSeconds: false,
                 showMeridian: false,
                 showInputs: false,
-                explicitMode: false,
+                explicitMode: true,
                 defaultTime: '{{ form.operating_hours.value|default:'' }}'
             });
       </script>
