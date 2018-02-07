@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.shortcuts import render
 from datetime import datetime
 from datetime import timedelta
@@ -14,8 +11,6 @@ from django.db import transaction
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist
-# Create your views here.
-
 
 
 def set_language(request, lang='es'):
@@ -27,14 +22,19 @@ def set_language(request, lang='es'):
     return redirect('index')
 
 
+# def clean_tank_value(value):
+#     return value.replace('[','') \
+#                 .replace(']','') \
+#                 .replace('u','') \
+#                 .replace("'","") 
+
+
 @login_required
 def checks_new(request):
+    form = CheckForm()
     try:
         latest_check = Check.objects.latest('created_at')
-        clean_tank_value = latest_check.tank.replace('[','') \
-                                            .replace(']','') \
-                                            .replace('u','') \
-                                            .replace("'","") 
+        clean_tank_value = unicode(latest_check.tank).replace(",",".")
         defaults = {
             'tank': clean_tank_value,
             'operating_hours': latest_check.operating_hours,
@@ -47,7 +47,7 @@ def checks_new(request):
     except ObjectDoesNotExist, e:
         form = CheckForm()
     except Exception, e:
-        logging.error('ERROR Exception',e)
+        logging.error(e)
 
     context = {'form': form,}
     return render(request, 'checks/new.html', context)
@@ -57,6 +57,8 @@ def sanitize_checks_create_params(request):
     params = request.POST.copy()
     try:
         params['user'] = request.user.pk
+        params['start_time'] = datetime.now().strftime('%H:%M')
+        params['tank'] = float(clean_tank_value)
     except Exception, e:
         logging.error('ERROR Exception',e)
     return params
@@ -89,11 +91,7 @@ def checks_create(request):
 def checks_show(request, pk):
     check = Check.objects.get(pk=pk)
     form = CheckForm(instance=check)
-    clean_tank_value = check.tank.replace('[','') \
-                                 .replace(']','') \
-                                 .replace('u','') \
-                                 .replace("'","") 
-    logging.error(clean_tank_value)
+    clean_tank_value = float(check.tank)
     context = {'check': check, 'form': form, 'clean_tank_value': clean_tank_value}
     return render(request, 'checks/show.html', context)
 

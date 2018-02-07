@@ -20,6 +20,11 @@ CHOICES = (
     ('0.875', '7/8',),
     ('1', _('full')))
 
+def clean_tank_value(value):
+    return value.replace('[','') \
+                .replace(']','') \
+                .replace('u','') \
+                .replace("'","") 
 
 class CheckForm(forms.ModelForm):
     start_time = forms.TimeField(
@@ -56,6 +61,11 @@ class CheckForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super(CheckForm, self).clean()
+
+    def clean_tank(self):
+        value = self.cleaned_data.get('tank')
+        value = clean_tank_value(value[0])
+        return value
 
     class Meta:
         model = Check

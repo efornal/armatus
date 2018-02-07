@@ -17,6 +17,7 @@
           <th>{{ _('Voltage_1') }}</th>
           <th>{{ _('Voltage_2') }}</th>
           <th>{{ _('Voltage_3') }}</th>
+          <th>{{ _('Tank') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -37,14 +38,17 @@
           </td>
           <td>{{ check.starts|default:'' }} </td>
           <td>{{ check.operating_hours|default:'' }} </td>
-          <td title="{{ check.voltage_1|default:'' }} ">
+          <td>
             {{ check.voltage_1|default:'' }}
           </td>
-          <td title="{{ check.voltage_2|default:'' }} ">
+          <td>
             {{ check.voltage_2|default:'' }}
           </td>
-          <td title="{{ check.voltage_3|default:'' }} ">
+          <td>
             {{ check.voltage_3|default:'' }}
+          </td>
+          <td>
+            {% widthratio check.tank 1 100 %}%
           </td>
         </tr>
         {% endfor %}

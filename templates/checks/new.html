@@ -11,7 +11,7 @@
             
       <div class="form-group" title="{{ _('Start_title') }}">
         <label class="col-sm-2 control-label" for="id_starts">{{ _('Starts') }}</label>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
           <input class="form-control" type="number" name="starts" id="id_starts"
                  value="{{ form.starts.value|default:'' }}"/>
         </div>
@@ -19,7 +19,7 @@
 
       <div class="form-group">
         <label class="col-sm-2 control-label" for="id_operating_hours">{{ _('Operating_hours') }}</label>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
           <div class="input-group" >
             <span class="input-group-addon" id="basic-addon1" >
               <span class="glyphicon glyphicon-time" id="id_operating_hours_icon" aria-hidden="true"></span>
@@ -45,21 +45,21 @@
 
       <div class="form-group">
         <label class="col-sm-2 control-label" for="id_date_from">{{ _('Voltages') }}</label>
-        <div class="col-sm-1">
+        <div class="col-sm-2">
           <div class="input-group" >
             <input class="form-control" type="number" name="voltage_1" id="id_voltage_1"
                    value="{{ form.voltage_1.value|default:'' }}"/>
           </div>
         </div>
         <label class="control-label"></label>
-        <div class="col-sm-1">
+        <div class="col-sm-2">
           <div class="input-group">
             <input class="form-control" type="number" name="voltage_2" id="id_voltage_2"
                    value="{{ form.voltage_2.value|default:'' }}"/>
           </div>
         </div>
         <label class="control-label"></label>
-        <div class="col-sm-1">
+        <div class="col-sm-2">
           <div class="input-group">
             <input class="form-control" type="number" name="voltage_3" id="id_voltage_3"
                    value="{{ form.voltage_3.value|default:'' }}"/>
@@ -69,16 +69,24 @@
 
       <div class="form-group">
         <label class="col-sm-2 control-label" for="id_tank">{{ _('Tank') }}</label>
-        <div class="col-sm-4">
-          <select class="form-control" name="tank" id="id_tank" style="margin-bottom: 5px;" >
+        <div class="col-sm-2">
+          <select class="form-control" name="tank" id="id_tank">
             {% for choice in form.tank.field.choices %}
-
-            <option value="{{choice.0}}" {% if choice.0|stringformat:"s" == form.tank.value %}selected=''{% endif %}>{{ choice.1}}</option>{% endfor %}
+            <option value="{{choice.0}}" {% if choice.0 == form.tank.value %}selected{%endif%}>{{choice.1}}</option>{% endfor %}
           </select>
           <small id="id_complete_resource" class="form-text text-muted">&nbsp;</small>
         </div>
       </div>
 
+      <div class="form-group" title="{{ _('Observations') }}">
+        <label class="col-sm-2 control-label" for="id_objectives">{{ _('Observations') }}</label>
+        <div class="col-sm-6">
+          <textarea class="form-control " name="observations" id="id_observations"
+                    rows="3">
+            {{ check.observations|default:'' }}</textarea>
+        </div>
+      </div>
+      
       <br>
       <div class="form-group pull-right">
         <div class="col-xs-12">

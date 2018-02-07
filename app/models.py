@@ -22,7 +22,6 @@ class Check(models.Model):
         auto_now=True,
         verbose_name=_('updated_at'))
     start_time = models.TimeField(
-        default=datetime.now().strftime('%H:%M'),
         null=False,
         verbose_name=_('start_time'))
     end_time = models.TimeField(
@@ -44,7 +43,7 @@ class Check(models.Model):
     voltage_3 = models.IntegerField(
         null=False,
         verbose_name=_('voltage_3'))
-    tank = models.TextField(
+    tank = models.FloatField(
         null=False,
         verbose_name=_('tank'))
     observation = models.TextField(
@@ -59,3 +58,6 @@ class Check(models.Model):
 
     def __unicode__(self):
         return unicode(format(self.created_at, "%d-%m-%Y, %H:%S"))
+
+    def __str__(self):
+        return format(self.created_at, "%d-%m-%Y, %H:%S")

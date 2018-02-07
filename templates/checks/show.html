@@ -41,15 +41,15 @@
       </div>
 
       <div class="form-group">      
-        <label class="control-label col-sm-2">{{ _('Starts') }}</label>
-        <div class="col-sm-1">
+        <label class="control-label col-sm-2">{{ _('Start_time') }}</label>
+        <div class="col-sm-2">
           <div class="input-group">
             <input class="form-control" type="text" name="voltage_2" id="id_voltage_2"
                    value="{{ check.start_time|default:'' }}"  readonly=""/>
           </div>
         </div>
-        <label class="control-label col-sm-1">{{ _('End') }}</label>
-        <div class="col-sm-1">
+        <label class="control-label col-sm-2">{{ _('End') }}</label>
+        <div class="col-sm-2">
           <div class="input-group">
             <input class="form-control" type="text" name="voltage_3" id="id_voltage_3"
                    value="{{ check.end_time|default:'' }}"  readonly=""/>
@@ -59,21 +59,21 @@
       
       <div class="form-group">
         <label class="col-sm-2 control-label" for="id_date_from">{{ _('Voltages') }}</label>
-        <div class="col-sm-1">
+        <div class="col-sm-2">
           <div class="input-group" >
             <input class="form-control" type="text" name="voltage_1" id="id_voltage_1"
                    value="{{ form.voltage_1.value|default:'' }}"  readonly=""/>
           </div>
         </div>
         <label class="control-label"></label>
-        <div class="col-sm-1">
+        <div class="col-sm-2">
           <div class="input-group">
             <input class="form-control" type="text" name="voltage_2" id="id_voltage_2"
                    value="{{ form.voltage_2.value|default:'' }}"  readonly=""/>
           </div>
         </div>
         <label class="control-label"></label>
-        <div class="col-sm-1">
+        <div class="col-sm-2">
           <div class="input-group">
             <input class="form-control" type="text" name="voltage_3" id="id_voltage_3"
                    value="{{ form.voltage_3.value|default:'' }}"  readonly=""/>
@@ -83,12 +83,9 @@
 
       <div class="form-group">
         <label class="col-sm-2 control-label" for="id_tank">{{ _('Tank') }}</label>
-        <div class="col-sm-4">
-          {% for choice in form.tank.field.choices %}
-          {% if choice.0 == clean_tank_value %}
+        <div class="col-sm-2">
           <input class="form-control" type="text" name="voltage_3" id="id_voltage_3"
-                 value="{{ choice.1|default:'' }}"  readonly=""/>
-          {% endif %}{% endfor %}
+                 value="{% widthratio check.tank 1 100 %}%"  readonly=""/>
           <small id="id_complete_resource" class="form-text text-muted">&nbsp;</small>
         </div>
       </div>
@@ -97,7 +94,7 @@
         <label class="col-sm-2 control-label" for="id_objectives">{{ _('Observations') }}</label>
         <div class="col-sm-6">
           <textarea class="form-control " name="observations" id="id_observations"
-                    rows="5" readonly="">
+                    rows="3" readonly="">
             {{ check.observations|default:'' }}</textarea>
         </div>
       </div>
