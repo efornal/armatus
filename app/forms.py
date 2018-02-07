@@ -7,7 +7,7 @@ from django.utils.translation import ugettext as _
 from django.conf import settings
 from datetime import datetime
 from django.contrib.auth.models import User
-
+from durationfield.forms import DurationField as FDurationField
 
 CHOICES = (
     ('0', _('empty')),
@@ -33,7 +33,7 @@ class CheckForm(forms.ModelForm):
     end_time = forms.TimeField(
         required=False,
         label=_('end_time'))
-    operating_hours = forms.TimeField(
+    operating_hours = FDurationField(
         required=True,
         label=_('operating_hours'))
     starts = forms.IntegerField(
