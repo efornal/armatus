@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-06 11:31-0300\n"
+"POT-Creation-Date: 2018-02-08 13:13-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,75 +17,127 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: app/forms.py:12
-msgid "empty"
-msgstr "empty"
-
-#: app/forms.py:20
-msgid "full"
-msgstr "full"
-
-#: app/forms.py:26 app/models.py:21
+#: app/forms.py:22 app/models.py:26
 msgid "start_time"
 msgstr "start time"
 
-#: app/forms.py:29 app/models.py:25
+#: app/forms.py:25 app/models.py:30
 msgid "end_time"
 msgstr "end time"
 
-#: app/forms.py:32 app/models.py:28
+#: app/forms.py:28 app/models.py:33
 msgid "operating_hours"
 msgstr "operating hours"
 
-#: app/forms.py:35 app/models.py:31
+#: app/forms.py:31 app/models.py:36
 msgid "starts"
 msgstr "starts"
 
-#: app/forms.py:38 app/models.py:34
+#: app/forms.py:34 app/models.py:39
 msgid "voltage_1"
 msgstr "V.1"
 
-#: app/forms.py:41 app/models.py:37
+#: app/forms.py:37 app/models.py:42
 msgid "voltage_2"
 msgstr "V.2"
 
-#: app/forms.py:44 app/models.py:40
+#: app/forms.py:40 app/models.py:45
 msgid "voltage_3"
 msgstr "V.3"
 
-#: app/models.py:14
+#: app/forms.py:50 app/models.py:17 app/models.py:81
+msgid "user"
+msgstr "user"
+
+#: app/forms.py:54 app/models.py:52 app/models.py:123
+msgid "observations"
+msgstr "observations"
+
+#: app/models.py:20 app/models.py:84
 msgid "created_at"
 msgstr "created at"
 
-#: app/models.py:17
+#: app/models.py:23 app/models.py:87
 msgid "updated_at"
 msgstr "updated at"
 
-#: app/models.py:43
+#: app/models.py:48
 msgid "tank"
 msgstr "tank"
 
-#: app/models.py:47
-msgid "description"
-msgstr "description"
-
-#: app/models.py:51
+#: app/models.py:56
 msgid "Check"
 msgstr "Check"
 
-#: app/models.py:52 templates/base.html:88
+#: app/models.py:57 templates/base.html:88
 msgid "Checks"
 msgstr "Checks"
 
-#: app/views.py:72
+#: app/models.py:90
+msgid "hours"
+msgstr "hours"
+
+#: app/models.py:95
+msgid "oil_type"
+msgstr "oil type"
+
+#: app/models.py:98
+msgid "oil"
+msgstr "oil"
+
+#: app/models.py:101
+msgid "oil_filter"
+msgstr "oil filter"
+
+#: app/models.py:104
+msgid "fuel_filter"
+msgstr "fuel filter"
+
+#: app/models.py:107
+msgid "air_filter"
+msgstr "air filter"
+
+#: app/models.py:110
+msgid "refrigerant"
+msgstr "refrigerant"
+
+#: app/models.py:113
+msgid "battery"
+msgstr "battery"
+
+#: app/models.py:116
+msgid "next_service_date"
+msgstr "next service date"
+
+#: app/models.py:119
+msgid "next_service_hours"
+msgstr "next service hours"
+
+#: app/models.py:127
+msgid "Service"
+msgstr "Service"
+
+#: app/models.py:128
+msgid "Services"
+msgstr "Services"
+
+#: app/views.py:71
 msgid "msg_check_created"
 msgstr "The new verification was added correctly"
 
-#: armatus/settings.py:137 templates/base.html:70 templates/base.html:75
+#: armatus/settings.py:38
+msgid "empty"
+msgstr "empty"
+
+#: armatus/settings.py:46
+msgid "full"
+msgstr "full"
+
+#: armatus/settings.py:147 templates/base.html:70 templates/base.html:75
 msgid "Spanish"
 msgstr "Spanish"
 
-#: armatus/settings.py:138 templates/base.html:71 templates/base.html:77
+#: armatus/settings.py:148 templates/base.html:71 templates/base.html:77
 msgid "English"
 msgstr "English"
 
@@ -106,7 +158,7 @@ msgstr "language"
 msgid "username"
 msgstr "username"
 
-#: templates/base.html:92
+#: templates/base.html:92 templates/index.html:64
 msgid "New_check"
 msgstr "New check"
 
@@ -132,7 +184,7 @@ msgid "Start_title"
 msgstr "Start title"
 
 #: templates/checks/new.html:13 templates/checks/show.html:12
-#: templates/checks/show.html:44 templates/index.html:15
+#: templates/index.html:15
 msgid "Starts"
 msgstr "Starts"
 
@@ -141,15 +193,21 @@ msgstr "Starts"
 msgid "Operating_hours"
 msgstr "Operating hours"
 
-#: templates/checks/new.html:47 templates/checks/show.html:61
+#: templates/checks/new.html:48 templates/checks/show.html:61
 msgid "Voltages"
 msgstr "Voltages"
 
-#: templates/checks/new.html:71 templates/checks/show.html:85
+#: templates/checks/new.html:72 templates/checks/show.html:85
+#: templates/index.html:20
 msgid "Tank"
 msgstr "Tank"
 
-#: templates/checks/new.html:84
+#: templates/checks/new.html:82 templates/checks/new.html:83
+#: templates/checks/show.html:93 templates/checks/show.html:94
+msgid "Observations"
+msgstr "Observations"
+
+#: templates/checks/new.html:93
 msgid "Send_application"
 msgstr "Send"
 
@@ -161,25 +219,21 @@ msgstr "Show checks"
 msgid "Date"
 msgstr "Date"
 
+#: templates/checks/show.html:44 templates/index.html:13
+msgid "Start_time"
+msgstr "Start time"
+
 #: templates/checks/show.html:51
 msgid "End"
 msgstr "End"
 
-#: templates/checks/show.html:96 templates/checks/show.html:97
-msgid "Observations"
-msgstr "Observations"
-
-#: templates/checks/show.html:108
+#: templates/checks/show.html:105
 msgid "Back"
 msgstr "Back"
 
 #: templates/index.html:12
 msgid "Created_at"
 msgstr "Created at"
-
-#: templates/index.html:13
-msgid "Start_time"
-msgstr "Start time"
 
 #: templates/index.html:14
 msgid "End_time"
@@ -197,11 +251,11 @@ msgstr "V.2"
 msgid "Voltage_3"
 msgstr "V.3"
 
-#: templates/index.html:33
+#: templates/index.html:34
 msgid "Finalize"
 msgstr "Finalize"
 
-#: templates/index.html:53
+#: templates/index.html:57
 msgid "withouth_results"
 msgstr "withouth results"
 

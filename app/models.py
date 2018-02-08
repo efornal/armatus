@@ -99,6 +99,9 @@ class Service(models.Model):
     oil_filter = models.BooleanField(
         default=False,
         verbose_name=_('oil_filter'))
+    fuel = models.BooleanField(
+        default=False,
+        verbose_name=_('fuel'))
     fuel_filter = models.BooleanField(
         default=False,
         verbose_name=_('fuel_filter'))
@@ -110,7 +113,7 @@ class Service(models.Model):
         verbose_name=_('refrigerant'))
     battery = models.BooleanField(
         default=False,
-        verbose_name=_('battery '))
+        verbose_name=_('battery'))
     next_service_date = models.DateField(
         null=True,
         verbose_name=_('next_service_date'))
