@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-08 13:13-0300\n"
+"POT-Creation-Date: 2018-02-08 13:18-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "voltage 3"
 msgid "user"
 msgstr "usuario"
 
-#: app/forms.py:54 app/models.py:52 app/models.py:123
+#: app/forms.py:54 app/models.py:52 app/models.py:126
 msgid "observations"
 msgstr "observaciones"
 
@@ -91,34 +91,38 @@ msgid "oil_filter"
 msgstr "filtro de aceite"
 
 #: app/models.py:104
+msgid "fuel"
+msgstr "combustible"
+
+#: app/models.py:107
 msgid "fuel_filter"
 msgstr "filtro de combustible"
 
-#: app/models.py:107
+#: app/models.py:110
 msgid "air_filter"
 msgstr "filtro de aire"
 
-#: app/models.py:110
+#: app/models.py:113
 msgid "refrigerant"
 msgstr "refrigerante"
 
-#: app/models.py:113
+#: app/models.py:116
 msgid "battery"
 msgstr "batería"
 
-#: app/models.py:116
+#: app/models.py:119
 msgid "next_service_date"
 msgstr "Fecha próximo servicio"
 
-#: app/models.py:119
+#: app/models.py:122
 msgid "next_service_hours"
 msgstr "Horas próximo servicio"
 
-#: app/models.py:127
+#: app/models.py:130
 msgid "Service"
 msgstr "Servicio"
 
-#: app/models.py:128
+#: app/models.py:131
 msgid "Services"
 msgstr "Servicios"
 
