@@ -8,17 +8,7 @@ from django.conf import settings
 from datetime import datetime
 from django.contrib.auth.models import User
 from durationfield.forms import DurationField as FDurationField
-
-CHOICES = (
-    ('0', _('empty')),
-    ('0.125', '1/8',),
-    ('0.25', '1/4',),
-    ('0.375', '3/8',),
-    ('0.5', '1/2',),
-    ('0.625', '5/8',),
-    ('0.375', '3/4',),
-    ('0.875', '7/8',),
-    ('1', _('full')))
+from django.conf import settings
 
 def clean_tank_value(value):
     return value.replace('[','') \
@@ -51,13 +41,17 @@ class CheckForm(forms.ModelForm):
     tank = forms.MultipleChoiceField(
         required=True,
         widget=forms.CheckboxSelectMultiple,
-        choices=CHOICES,
+        choices=settings.TANK_FUEL_LEVEL_CHOICES,
     )
     user = forms.ModelChoiceField(
         queryset=User.objects.all(),
         to_field_name = "id",
         required = True,
         label=_('user'))
+    observations = forms.CharField(
+        required=False,
+        widget=forms.Textarea,
+        label=_('observations'))
 
     def clean(self):
         cleaned_data = super(CheckForm, self).clean()
@@ -70,4 +64,4 @@ class CheckForm(forms.ModelForm):
     class Meta:
         model = Check
         fields = ('start_time', 'end_time', 'operating_hours','starts','tank',
-                  'voltage_1','voltage_2','voltage_3','user')
+                  'voltage_1','voltage_2','voltage_3','user','observations')

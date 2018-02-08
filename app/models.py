@@ -46,10 +46,10 @@ class Check(models.Model):
     tank = models.FloatField(
         null=False,
         verbose_name=_('tank'))
-    observation = models.TextField(
+    observations = models.TextField(
         null=True,
         blank=True,
-        verbose_name=_('description'))
+        verbose_name=_('observations'))
 
     class Meta:
         db_table = 'checks'
@@ -61,3 +61,10 @@ class Check(models.Model):
 
     def __str__(self):
         return format(self.created_at, "%d-%m-%Y, %H:%S")
+
+    def operation_hours(self):
+        ts = self.operating_hours.total_seconds()
+        h = ts//3600
+        m = (ts%3600)//60
+        s = (ts%3600)%60
+        return "{}:{}".format(int(h),int(m))

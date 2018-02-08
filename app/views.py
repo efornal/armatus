@@ -22,13 +22,6 @@ def set_language(request, lang='es'):
     return redirect('index')
 
 
-# def clean_tank_value(value):
-#     return value.replace('[','') \
-#                 .replace(']','') \
-#                 .replace('u','') \
-#                 .replace("'","") 
-
-
 @login_required
 def checks_new(request):
     form = CheckForm()
@@ -37,7 +30,7 @@ def checks_new(request):
         clean_tank_value = unicode(latest_check.tank).replace(",",".")
         defaults = {
             'tank': clean_tank_value,
-            'operating_hours': latest_check.operating_hours,
+            'operating_hours': latest_check.operation_hours(),
             'starts':latest_check.starts+1,
             'voltage_1': latest_check.voltage_1,
             'voltage_2': latest_check.voltage_2,
@@ -95,6 +88,7 @@ def checks_show(request, pk):
     context = {'check': check, 'form': form, 'clean_tank_value': clean_tank_value}
     return render(request, 'checks/show.html', context)
 
+
 @login_required
 def checks_finalize(request, pk):
     try:
@@ -107,6 +101,7 @@ def checks_finalize(request, pk):
     except Exception as e:
         logging.error(e)
     return redirect('index')
+
 
 @login_required
 def index(request):
