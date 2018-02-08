@@ -111,6 +111,12 @@ class Service(models.Model):
     battery = models.BooleanField(
         default=False,
         verbose_name=_('battery '))
+    next_service_date = models.DateField(
+        null=True,
+        verbose_name=_('next_service_date'))
+    next_service_hours = models.IntegerField(
+        null=True,
+        verbose_name=_('next_service_hours'))
     observations = models.TextField(
         null=True,
         blank=True,

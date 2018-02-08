@@ -11,7 +11,8 @@ class CheckAdmin(admin.ModelAdmin):
 
 class ServiceAdmin(admin.ModelAdmin):
     ordering = ('-created_at','-updated_at')
-    list_display = ('created_at','hours','oil')
+    list_display = ('created_at','hours','oil',
+                    'oil_filter','fuel_filter','air_filter','refrigerant','battery')
     
 admin.site.register(Check,CheckAdmin)
 admin.site.register(Service,ServiceAdmin)
