@@ -36,7 +36,7 @@ def if_not_exist_in(value,objects):
 @register.filter
 def boolean_icon(value):
     if value:
-        return mark_safe('<img src="/static/admin/img/icon-yes.svg">')
+        return mark_safe('<i class="glyphicon glyphicon-ok"></i>')
     else:
-        return mark_safe('<img src="/static/admin/img/icon-no.svg">')
+        return mark_safe('<i class="glyphicon glyphicon-remove"></i>')
         
