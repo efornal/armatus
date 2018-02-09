@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-08 13:18-0300\n"
+"POT-Creation-Date: 2018-02-09 10:40-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,11 +122,11 @@ msgstr "Horas próximo servicio"
 msgid "Service"
 msgstr "Servicio"
 
-#: app/models.py:131
+#: app/models.py:131 templates/base.html:103
 msgid "Services"
 msgstr "Servicios"
 
-#: app/views.py:71
+#: app/views.py:72
 msgid "msg_check_created"
 msgstr "La nueva verificación se agregó correctamente"
 
@@ -158,7 +158,7 @@ msgstr "Inicio"
 msgid "language"
 msgstr "idioma"
 
-#: templates/base.html:86 templates/base.html:102
+#: templates/base.html:86 templates/base.html:101 templates/base.html:116
 #: templates/registration/login.html:38
 msgid "username"
 msgstr "usuario"
@@ -171,11 +171,19 @@ msgstr "Nueva verificación"
 msgid "See_checks"
 msgstr "Ver verificaciones"
 
-#: templates/base.html:108 templates/base.html:112
+#: templates/base.html:107 templates/services/index.html:52
+msgid "New_service"
+msgstr "Nuevo servicio"
+
+#: templates/base.html:109
+msgid "See_services"
+msgstr "Ver servicios"
+
+#: templates/base.html:122 templates/base.html:126
 msgid "Close_session"
 msgstr "Cerrar sesión"
 
-#: templates/base.html:118 templates/registration/login.html:33
+#: templates/base.html:132 templates/registration/login.html:33
 #: templates/registration/login.html:50
 msgid "Init_session"
 msgstr "Iniciar sesión"
@@ -232,11 +240,11 @@ msgstr "Inicio"
 msgid "End"
 msgstr "Fin"
 
-#: templates/checks/show.html:105
+#: templates/checks/show.html:104
 msgid "Back"
 msgstr "Volver"
 
-#: templates/index.html:12
+#: templates/index.html:12 templates/services/index.html:12
 msgid "Created_at"
 msgstr "Creado"
 
@@ -260,7 +268,7 @@ msgstr "V.3"
 msgid "Finalize"
 msgstr "Finalizar"
 
-#: templates/index.html:57
+#: templates/index.html:57 templates/services/index.html:45
 msgid "withouth_results"
 msgstr "Sin resultados"
 
@@ -275,3 +283,43 @@ msgstr "Gracias por el tiempo que has dedicado al sitio web hoy."
 #: templates/registration/login.html:44
 msgid "password"
 msgstr "contraseña"
+
+#: templates/services/index.html:13
+msgid "Oil"
+msgstr "Aceite"
+
+#: templates/services/index.html:14
+msgid "Oil_filter"
+msgstr "Filtro aceite"
+
+#: templates/services/index.html:15
+msgid "Fuel"
+msgstr "Combustible"
+
+#: templates/services/index.html:16
+msgid "Fuel_filter"
+msgstr "Filtro combustible"
+
+#: templates/services/index.html:17
+msgid "Air_filter"
+msgstr "Filtro aire"
+
+#: templates/services/index.html:18
+msgid "Refrigerant"
+msgstr "Refrigerante"
+
+#: templates/services/index.html:19
+msgid "Battery"
+msgstr "Batería"
+
+#: templates/services/index.html:20
+msgid "Hours"
+msgstr "Horas"
+
+#: templates/services/index.html:21
+msgid "Next_service_hours"
+msgstr "Próximo servicio (hs)"
+
+#: templates/services/index.html:22
+msgid "Next_service_date"
+msgstr "Próximo servicio"
