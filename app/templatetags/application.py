@@ -1,6 +1,6 @@
 from django import template
 from django.conf import settings
-
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 
@@ -32,3 +32,11 @@ def if_not_exist_in(value,objects):
         if o.name == value:
             result = ''
     return result
+
+@register.filter
+def boolean_icon(value):
+    if value:
+        return mark_safe('<img src="/static/admin/img/icon-yes.svg">')
+    else:
+        return mark_safe('<img src="/static/admin/img/icon-no.svg">')
+        

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% load application %}
+{% block content %}
+ 
+<div class="panel panel-default">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr class="active">
+          <th>{{ _('Created_at') }}</th>
+          <th>{{ _('Oil') }}</th>
+          <th>{{ _('Oil_filter') }}</th>
+          <th>{{ _('Fuel') }}</th>
+          <th>{{ _('Fuel_filter') }}</th>
+          <th>{{ _('Air_filter') }}</th>
+          <th>{{ _('Refrigerant') }}</th>
+          <th>{{ _('Battery') }}</th>
+          <th>{{ _('Hours') }}</th>
+          <th>{{ _('Next_service_hours') }}</th>
+          <th>{{ _('Next_service_date') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if services %} {% for service in services %}
+        <tr>
+          <td title="{{ service.observation|default:'' }}">
+            <a href="" >{{ service.created_at|default:'' }}<a/>
+          </td>
+          <td>{{ service.oil|boolean_icon }}</td>
+          <td>{{ service.oil_filter|boolean_icon }}</td>
+          <td>{{ service.fuel|boolean_icon }}</td>
+          <td>{{ service.fuel_filter|boolean_icon }}</td>
+          <td>{{ service.air_filter|boolean_icon }}</td>
+          <td>{{ service.refrigerant|boolean_icon }}</td>
+          <td>{{ service.battery|boolean_icon }}</td>
+          <td>{{ service.hours|default:'' }}</td>
+          <td>{{ service.next_service_hours|default:'' }}</td>
+          <td>{{ service.next_service_date|default:'' }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+          <td colspan='6'>{{ _('withouth_results') }}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    <table class="table table-bordered table-hover">
+      <tr>
+        <td style="width:5%;text-align:center" title="{{ _('New_service') }}">
+          <a href="" id="add_row" >
+            <i class=" glyphicon glyphicon-plus-sign"></i>
+          </a>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+
+  </div>
+</div>
+
+{% endblock %}
+

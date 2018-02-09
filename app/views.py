@@ -2,6 +2,7 @@ from django.shortcuts import render
 from datetime import datetime
 from datetime import timedelta
 from .models import Check
+from .models import Service
 from .forms import CheckForm
 from django.contrib.auth.decorators import login_required
 from django.utils import translation
@@ -109,3 +110,11 @@ def index(request):
     checks = Check.objects.all().order_by('-created_at')
     context = {'checks': checks}
     return render(request, 'index.html', context)
+
+
+@login_required
+def services_index(request):
+    context={}
+    services = Service.objects.all().order_by('-created_at')
+    context = {'services': services}
+    return render(request, 'services/index.html', context)
