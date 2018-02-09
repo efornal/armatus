@@ -12,11 +12,11 @@
           <th>{{ _('Created_at') }}</th>
           <th>{{ _('Fuel') }}</th>
           <th>{{ _('Oil') }}</th>
-          <th>{{ _('Oil_filter') }}</th>
-          <th>{{ _('Fuel_filter') }}</th>
-          <th>{{ _('Air_filter') }}</th>
           <th>{{ _('Refrigerant') }}</th>
           <th>{{ _('Battery') }}</th>
+          <th><i class="glyphicon glyphicon-filter"></i>{{ _('Oil') }}</th>
+          <th><i class="glyphicon glyphicon-filter"></i>{{ _('Fuel') }}</th>
+          <th><i class="glyphicon glyphicon-filter"></i>{{ _('Air') }}</th>
           <th>{{ _('Hours') }}</th>
           <th>{{ _('Next_service_hours') }}</th>
           <th>{{ _('Next_service_date') }}</th>
@@ -31,11 +31,11 @@
           </td>
           <td>{{ service.fuel|boolean_icon }}</td>
           <td>{{ service.oil|boolean_icon }}</td>
+          <td>{{ service.refrigerant|boolean_icon }}</td>
+          <td>{{ service.battery|boolean_icon }}</td>
           <td>{{ service.oil_filter|boolean_icon }}</td>
           <td>{{ service.fuel_filter|boolean_icon }}</td>
           <td>{{ service.air_filter|boolean_icon }}</td>
-          <td>{{ service.refrigerant|boolean_icon }}</td>
-          <td>{{ service.battery|boolean_icon }}</td>
           <td>{{ service.hours|default:'' }}</td>
           <td>{{ service.next_service_hours|default:'' }}</td>
           <td>{{ service.next_service_date|default:'' }}</td>

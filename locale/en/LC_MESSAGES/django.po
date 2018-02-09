@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 10:40-0300\n"
+"POT-Creation-Date: 2018-02-09 11:32-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,7 +170,7 @@ msgstr "New check"
 msgid "See_checks"
 msgstr "See checks"
 
-#: templates/base.html:107 templates/services/index.html:52
+#: templates/base.html:107 templates/services/index.html:53
 msgid "New_service"
 msgstr "New service"
 
@@ -267,7 +267,7 @@ msgstr "V.3"
 msgid "Finalize"
 msgstr "Finalize"
 
-#: templates/index.html:57 templates/services/index.html:45
+#: templates/index.html:57 templates/services/index.html:46
 msgid "withouth_results"
 msgstr "withouth results"
 
@@ -283,33 +283,25 @@ msgstr "Thank you for the time you spent on the website today."
 msgid "password"
 msgstr "password"
 
-#: templates/services/index.html:13
-msgid "Oil"
-msgstr "Oil"
-
-#: templates/services/index.html:14
-msgid "Oil_filter"
-msgstr "Oil filter"
-
-#: templates/services/index.html:15
+#: templates/services/index.html:13 templates/services/index.html:18
 msgid "Fuel"
 msgstr "Fuel"
 
-#: templates/services/index.html:16
-msgid "Fuel_filter"
-msgstr "Fuel filter"
+#: templates/services/index.html:14 templates/services/index.html:17
+msgid "Oil"
+msgstr "Oil"
 
-#: templates/services/index.html:17
-msgid "Air_filter"
-msgstr "Air filter"
-
-#: templates/services/index.html:18
+#: templates/services/index.html:15
 msgid "Refrigerant"
 msgstr "Refrigerant"
 
-#: templates/services/index.html:19
+#: templates/services/index.html:16
 msgid "Battery"
 msgstr "Battery"
+
+#: templates/services/index.html:19
+msgid "Air"
+msgstr "Air"
 
 #: templates/services/index.html:20
 msgid "Hours"
@@ -322,3 +314,12 @@ msgstr "Next service (hs)"
 #: templates/services/index.html:22
 msgid "Next_service_date"
 msgstr "Next service"
+
+#~ msgid "Oil_filter"
+#~ msgstr "Oil filter"
+
+#~ msgid "Fuel_filter"
+#~ msgstr "Fuel filter"
+
+#~ msgid "Air_filter"
+#~ msgstr "Air filter"
