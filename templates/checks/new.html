@@ -2,75 +2,146 @@
 {% load i18n %}
 {% block content %}
 
-    
 <div class="well bs-component">
   <form class="form-horizontal" action="{% url 'checks_create' %}" method="post">
     {% csrf_token %}
     <fieldset>
       <legend>{{ _('Checks_request') }}</legend>
-            
       <div class="form-group" title="{{ _('Start_title') }}">
         <label class="col-sm-2 control-label" for="id_starts">{{ _('Starts') }}</label>
         <div class="col-sm-2">
-          <input class="form-control" type="number" name="starts" id="id_starts"
-                 value="{{ form.starts.value|default:'' }}"/>
+          <div class="input-group number-spinner">
+            <span class="input-group-addon btn" id="sp0up">
+              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </span>
+            <input class="form-control text-center" type="text" name="starts" id="id_starts"
+                   value="{{ form.starts.value|default:'' }}"/>
+            <span class="input-group-addon btn" id="sp0down" >
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </span>
+          </div>
         </div>
       </div>
-
+      <script>
+        $( "#sp0up" ).on( "click", function() {
+          $( "#id_starts" ).val( parseInt($( "#id_starts" ).val())-1);
+        });
+        $( "#sp0down" ).on( "click", function() {
+          $( "#id_starts" ).val( parseInt($( "#id_starts" ).val())+1);
+        });
+      </script>
+  
+      
       <div class="form-group">
-        <label class="col-sm-2 control-label" for="id_operating_hours">{{ _('Operating_hours') }}</label>
+        <label class="col-sm-2 control-label" for="id_operating_hours">
+          {{ _('Operating_hours') }}
+        </label>
         <div class="col-sm-2">
           <div class="input-group" >
             <span class="input-group-addon" id="basic-addon1" >
-              <span class="glyphicon glyphicon-time" id="id_operating_hours_icon" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-time" id="id_operating_hours_icon"
+                    aria-hidden="true"></span>
             </span>
-            <input class="form-control" type="text" name="operating_hours" id="id_operating_hours"
-                   value="{{ form.operating_hours.value|default:'' }}"/>
+            <input class="form-control" type="time" name="operating_hours"
+                   id="id_operating_hours"/>
           </div>
         </div>
       </div>
         
       <script type="text/javascript">
         $("#id_operating_hours").timepicker({
-                minuteStep: 1,
-                template: dropdown,
-                maxHours:1000,
-                appendWidgetTo: 'body',
-                showSeconds: false,
-                showMeridian: false,
-                showInputs: false,
-                explicitMode: true,
-                defaultTime: '{{ form.operating_hours.value|default:'' }}'
-            });
+        dropdown: false,
+        timeFormat: 'HHHH:mm',
+        minuteStep: 1
+        template: 'dropdown',
+        maxHours:1000,
+        appendWidgetTo: 'body',
+        showSeconds: false,
+        showMeridian: false,
+        showInputs: true,
+        explicitMode: true,
+        dinamic: false });
+        $("#id_operating_hours").on('change', function(evt) {
+     
+        var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+     
+        });
       </script>
 
       <div class="form-group">
         <label class="col-sm-2 control-label" for="id_date_from">{{ _('Voltages') }}</label>
         <div class="col-sm-2">
-          <div class="input-group" >
-            <input class="form-control" type="number" name="voltage_1" id="id_voltage_1"
+          <div class="input-group number-spinner">
+            <span class="input-group-addon btn" id="sp1up" >
+              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </span>
+            <input class="form-control text-center" type="text" name="voltage_1" id="id_voltage_1"
                    value="{{ form.voltage_1.value|default:'' }}"/>
+            <span class="input-group-addon btn" id="sp1down" >
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </span>
           </div>
         </div>
         <label class="control-label"></label>
         <div class="col-sm-2">
-          <div class="input-group">
-            <input class="form-control" type="number" name="voltage_2" id="id_voltage_2"
+          <div class="input-group number-spinner">
+            <span class="input-group-addon btn" id="sp2up" >
+              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </span>
+            <input class="form-control text-center" type="text" name="voltage_2" id="id_voltage_2"
                    value="{{ form.voltage_2.value|default:'' }}"/>
+            <span class="input-group-addon btn" id="sp2down" >
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </span>
           </div>
         </div>
         <label class="control-label"></label>
         <div class="col-sm-2">
-          <div class="input-group">
-            <input class="form-control" type="number" name="voltage_3" id="id_voltage_3"
+          <div class="input-group number-spinner">
+            <span class="input-group-addon btn" id="sp3up" >
+              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </span>
+            <input class="form-control text-center" type="text" name="voltage_3" id="id_voltage_3"
                    value="{{ form.voltage_3.value|default:'' }}"/>
+            <span class="input-group-addon btn" id="sp3down" >
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </span>
           </div>
         </div>
       </div>
+      <script>
+        $( "#sp1up" ).on( "click", function() {
+          $( "#id_voltage_1" ).val( parseInt($( "#id_voltage_1" ).val())-1);
+        });
+        $( "#sp1down" ).on( "click", function() {
+          $( "#id_voltage_1" ).val( parseInt($( "#id_voltage_1" ).val())+1);
+        });
+        $( "#sp2up" ).on( "click", function() {
+          $( "#id_voltage_2" ).val( parseInt($( "#id_voltage_2" ).val())-1);
+        });
+        $( "#sp2down" ).on( "click", function() {
+          $( "#id_voltage_2" ).val( parseInt($( "#id_voltage_2" ).val())+1);
+        });
+        $( "#sp3up" ).on( "click", function() {
+          $( "#id_voltage_3" ).val( parseInt($( "#id_voltage_3" ).val())-1);
+        });
+        $( "#sp3down" ).on( "click", function() {
+          $( "#id_voltage_3" ).val( parseInt($( "#id_voltage_3" ).val())+1);
+        });
+      </script>
 
       <div class="form-group">
         <label class="col-sm-2 control-label" for="id_tank">{{ _('Tank') }}</label>
         <div class="col-sm-2">
+          <input id="rango"
+             type="range"
+             min="0"
+             max="100"
+             step="10"
+             value="{{form.tank.value}}"
+                 data-orientation="vertical">
+          <input id="rango_valor">
+
           <select class="form-control" name="tank" id="id_tank">
             {% for choice in form.tank.field.choices %}
             <option value="{{choice.0}}" {% if choice.0 == form.tank.value %}selected{%endif%}>{{choice.1}}</option>{% endfor %}
@@ -78,7 +149,14 @@
           <small id="id_complete_resource" class="form-text text-muted">&nbsp;</small>
         </div>
       </div>
-
+      <script>
+        $( "#rango" ).on( "mousemove", function() {
+          $( "#rango_valor" ).val( $( "#rango" ).val() );
+        });
+        $( "#rango" ).on( "change", function() {
+          $( "#rango_valor" ).val( $( "#rango" ).val() );
+        });
+        </script>
       <div class="form-group" title="{{ _('Observations') }}">
         <label class="col-sm-2 control-label" for="id_objectives">{{ _('Observations') }}</label>
         <div class="col-sm-6">
@@ -86,7 +164,6 @@
                     rows="3">{{ check.observations|default:'' }}</textarea>
         </div>
       </div>
-      
       <br>
       <div class="form-group pull-right">
         <div class="col-xs-12">
@@ -96,6 +173,5 @@
     </fieldset>
   </form>
 </div>
-
 {% endblock %}
 
