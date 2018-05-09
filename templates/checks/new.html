@@ -10,23 +10,29 @@
       <div class="form-group" title="{{ _('Start_title') }}">
         <label class="col-sm-2 control-label" for="id_starts">{{ _('Starts') }}</label>
         <div class="col-sm-2">
-          <div class="input-group number-spinner">
-            <span class="input-group-addon btn" id="sp0up">
-              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-            </span>
+
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" id="sp0down" class="btn btn-primary" aria-label="Bold">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </div>
             <input class="form-control text-center" type="text" name="starts" id="id_starts"
                    value="{{ form.starts.value|default:'' }}"/>
-            <span class="input-group-addon btn" id="sp0down" >
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </span>
+            <div class="input-group-btn">
+              <button type="button" id="sp0up" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </div>
+           
           </div>
         </div>
       </div>
       <script>
-        $( "#sp0up" ).on( "click", function() {
+        $( "#sp0down" ).on( "click", function() {
           $( "#id_starts" ).val( parseInt($( "#id_starts" ).val())-1);
         });
-        $( "#sp0down" ).on( "click", function() {
+        $( "#sp0up" ).on( "click", function() {
           $( "#id_starts" ).val( parseInt($( "#id_starts" ).val())+1);
         });
       </script>
@@ -63,40 +69,52 @@
         <label class="col-sm-2 control-label" for="id_date_from">{{ _('Voltages') }}</label>
         <div class="col-sm-2">
           <div class="input-group number-spinner">
-            <span class="input-group-addon btn" id="sp1up" >
-              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-            </span>
+            <div class="input-group-btn">
+              <button type="button" id="sp1up" class="btn btn-primary" aria-label="Bold">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </div>
             <input class="form-control text-center" type="text" name="voltage_1" id="id_voltage_1"
                    value="{{ form.voltage_1.value|default:'' }}"/>
-            <span class="input-group-addon btn" id="sp1down" >
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </span>
+            <div class="input-group-btn">
+              <button type="button" id="sp1down" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </div>
           </div>
         </div>
         <label class="control-label"></label>
         <div class="col-sm-2">
           <div class="input-group number-spinner">
-            <span class="input-group-addon btn" id="sp2up" >
-              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-            </span>
+            <div class="input-group-btn">
+              <button type="button" id="sp2up" class="btn btn-primary" aria-label="Bold">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </div>
             <input class="form-control text-center" type="text" name="voltage_2" id="id_voltage_2"
                    value="{{ form.voltage_2.value|default:'' }}"/>
-            <span class="input-group-addon btn" id="sp2down" >
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </span>
+            <div class="input-group-btn">
+              <button type="button" id="sp2down" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </div>
           </div>
         </div>
         <label class="control-label"></label>
         <div class="col-sm-2">
           <div class="input-group number-spinner">
-            <span class="input-group-addon btn" id="sp3up" >
-              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-            </span>
+            <div class="input-group-btn">
+              <button type="button" id="sp3up" class="btn btn-primary" aria-label="Bold">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </div>
             <input class="form-control text-center" type="text" name="voltage_3" id="id_voltage_3"
                    value="{{ form.voltage_3.value|default:'' }}"/>
-            <span class="input-group-addon btn" id="sp3down" >
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </span>
+            <div class="input-group-btn">
+              <button type="button" id="sp3down" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
