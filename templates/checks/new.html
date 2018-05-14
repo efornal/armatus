@@ -11,7 +11,78 @@
   line-height: 1.6em;
   }
   </style>
-  
+<style>
+
+.slider {
+  width: 100%;
+  background: linear-gradient(to right, #ffffff -1%, #345578 100%);
+  margin: 0px 0;
+  padding: 0px;
+  position: relative;
+}
+
+.slider input[type="range"] {
+  width: 100%;
+}
+
+.slider .limit {
+  color: #fff;
+  position: absolute;
+  top: 30px;
+}
+
+.slider .limit:first-child {
+  left: 50px;
+}
+
+.slider .limit:last-child {
+  <!-- right: 5px; -->
+}
+
+.slider .colors {
+  margin: 0px;
+  padding: 0px;
+  margin-top: 20px;
+  list-style-type: none;
+}
+
+.slider .colors li {
+  display: inline-block;
+  <!-- width: 14%; -->
+}
+
+.slider .colors .green {
+  color: #c2ccd6;
+  position: absolute;
+  left: 0%;
+}
+
+.slider .colors .yellow {
+  color: #afbcca;
+  position: absolute;
+  left: 25%;
+}
+
+.slider .colors .orange {
+  color: #5b7592;
+  position: absolute;
+  left: 50%;
+}
+
+.slider .colors .red {
+  color: #436282;
+  position: absolute;
+  left: 75%;
+
+}
+.slider .colors .white {
+  color: #3d5d7e;
+  position: absolute;
+  left: 99%;
+
+}
+
+</style>
 
 <div class="well bs-component">
   <form class="form-horizontal" action="{% url 'checks_create' %}" method="post">
@@ -164,26 +235,32 @@
 
       <div class="form-group">
         <label class="col-sm-2 control-label" for="id_tank">{{ _('Tank') }}</label>
-        <div class="col-sm-2">
-          <div id="slider" style="margin-top: 10px;">
+        <div class="col-sm-4">
+          <div id="slider" class="slider"  style="margin-top: 10px;">
             <div id="custom-handle" class="ui-slider-handle"></div>
+            <ul class="colors">
+              <li class="green first-child">0</li>
+              <li class="yellow">1/4</li>
+              <li class="red">3/4</li>
+              <li class="white">1</li>
+              <li class="orange">1/2</li>
+            </ul>
           </div>
-          <img class="logo-header" src="/static/images/ranges.png">
+          <!-- <img class="logo-header" src="/static/images/ranges.png"> -->
         </div>
         <div class="col-sm-2">
-          <input id="rango_valor" name="tank" style="display: yes;"
+          <input id="rango_valor" name="tank" style="display: none;"
                  value="{{ form.tank.value }}">
         </div>
       
       </div>
-  
+  <br>
       <script>
-        //var labels = ['0','','','','']
         var handle = $( "#custom-handle" );
         $( "#slider" ).slider({
             max: 1,
             min: 0,
-        step: 0.125,
+            step: 0.05,
             value: {{ form.tank.value }},
             animate: "fast",
             create: function() {
@@ -191,7 +268,7 @@
             },
             slide: function( event, ui ) {
               handle.text( ui.value );
-              $( "#rango_valor" ).val( ui.value/100 );
+              $( "#rango_valor" ).val( ui.value);
             }
         });
       </script>
