@@ -1,48 +1,52 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-<style>
-  #custom-handle {
-    width: 3em;
-    height: 1.6em;
-    top: 50%;
-    margin-top: -.8em;
-    text-align: center;
-  line-height: 1.6em;
-  }
-  </style>
+{% load staticfiles %}
+
 <style>
 
 .slider {
   width: 100%;
-  background: linear-gradient(to right, #ffffff -1%, #345578 100%);
   margin: 0px 0;
-  padding: 0px;
+  padding-top: 25px;
   position: relative;
+  margin-top: -30px;
 }
-
 .slider input[type="range"] {
   width: 100%;
+  position: absolute;
+  top: 10px;
+
+}
+.slider-input{
+  position: absolute;
+  top: 10px;
+}
+.rangeslider{
+  position: absolute;
+  top: 45px;
+
+  background: linear-gradient(to right, #ffffff -1%, #345578 100%);
+}
+
+.rangeslider__handle{
+
+}
+
+.rangeslider__fill{
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  background: none !important;
 }
 
 .slider .limit {
   color: #fff;
   position: absolute;
-  top: 30px;
-}
-
-.slider .limit:first-child {
-  left: 50px;
-}
-
-.slider .limit:last-child {
-  <!-- right: 5px; -->
 }
 
 .slider .colors {
   margin: 0px;
-  padding: 0px;
-  margin-top: 20px;
   list-style-type: none;
 }
 
@@ -132,11 +136,12 @@
           </div>
         </div>
       </div>
-        
+      
+     
       <script type="text/javascript">
         $("#id_operating_hours").timepicker({
                 minuteStep: 1,
-                template: dropdown,
+                template: 'dropdown',
                 maxHours:1000,
                 appendWidgetTo: 'body',
                 showSeconds: false,
@@ -236,8 +241,7 @@
       <div class="form-group">
         <label class="col-sm-2 control-label" for="id_tank">{{ _('Tank') }}</label>
         <div class="col-sm-4">
-          <div id="slider" class="slider"  style="margin-top: 10px;">
-            <div id="custom-handle" class="ui-slider-handle"></div>
+          <div id="slider" class="slider">
             <ul class="colors">
               <li class="green first-child">0</li>
               <li class="yellow">1/4</li>
@@ -245,32 +249,53 @@
               <li class="white">1</li>
               <li class="orange">1/2</li>
             </ul>
+            <input class="slider-input"
+               type="range"
+               min="0"
+               max="1"
+               id="slider"
+               step="0.01"
+               value="{{ form.tank.value }}"
+               data-orientation="horizontal">
           </div>
           <!-- <img class="logo-header" src="/static/images/ranges.png"> -->
         </div>
         <div class="col-sm-2">
-          <input id="rango_valor" name="tank" style="display: none;"
+          <input id="rango_valor" name="tank" style="display: yes;"
                  value="{{ form.tank.value }}">
         </div>
       
       </div>
-  <br>
+      <br>
+
       <script>
-        var handle = $( "#custom-handle" );
-        $( "#slider" ).slider({
-            max: 1,
-            min: 0,
-            step: 0.05,
-            value: {{ form.tank.value }},
-            animate: "fast",
-            create: function() {
-              handle.text({{ form.tank.value }});
-            },
-            slide: function( event, ui ) {
-              handle.text( ui.value );
-              $( "#rango_valor" ).val( ui.value);
-            }
-        });
+        
+
+$( document ).ready(function() {
+
+$('input[type="range"]').rangeslider({
+  polyfill: false,
+  onSlide: function(position, value) {
+    $( "#rango_valor" ).val( value);
+  },
+});
+
+});
+        <!-- var handle = $( "#custom-handle" ); -->
+        <!-- $( "#slider" ).slider({ -->
+        <!--     max: 1, -->
+        <!--     min: 0, -->
+        <!--     step: 0.05, -->
+        <!--     value: {{ form.tank.value }}, -->
+        <!--     animate: "fast", -->
+        <!--     create: function() { -->
+        <!--       handle.text({{ form.tank.value }}); -->
+        <!--     }, -->
+        <!--     slide: function( event, ui ) { -->
+        <!--       handle.text( ui.value ); -->
+        <!--       $( "#rango_valor" ).val( ui.value); -->
+        <!--     } -->
+        <!-- }); -->
       </script>
       
       <div class="form-group" title="{{ _('Observations') }}">
