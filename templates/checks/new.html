@@ -22,22 +22,26 @@
   position: absolute;
   top: 10px;
 }
+.rangeslider__handle:after {
+    width: 0px !important;
+    height: 0px !important;
+}
+
 .rangeslider{
   position: absolute;
   top: 45px;
-
   background: linear-gradient(to right, #ffffff -1%, #345578 100%);
 }
 
-.rangeslider__handle{
-
+.rangeslider__handle {
+  width: 10px !important;
+  height: 20px !important;
+  top: 0px !important;
+  <!-- margin-left: 10px !important; -->
 }
 
 .rangeslider__fill{
-  width: 100%;
-  position: absolute;
-  top: 50px;
-  background: none !important;
+  display: none;
 }
 
 .slider .limit {
@@ -64,25 +68,25 @@
 .slider .colors .yellow {
   color: #afbcca;
   position: absolute;
-  left: 25%;
+  left: 23%;
 }
 
 .slider .colors .orange {
   color: #5b7592;
   position: absolute;
-  left: 50%;
+  left: 47%;
 }
 
 .slider .colors .red {
   color: #436282;
   position: absolute;
-  left: 75%;
+  left: 71%;
 
 }
 .slider .colors .white {
   color: #3d5d7e;
   position: absolute;
-  left: 99%;
+  left: 98%;
 
 }
 
@@ -226,18 +230,6 @@
         });
       </script>
 
-
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="id_tank">{{ _('Tank') }}</label>
-        <div class="col-sm-2">
-          <select class="form-control" name="tank" id="id_tank">
-            {% for choice in form.tank.field.choices %}
-            <option value="{{choice.0}}" {% if choice.0 == form.tank.value %}selected{%endif%}>{{choice.1}}</option>{% endfor %}
-          </select>
-          <small id="id_complete_resource" class="form-text text-muted">&nbsp;</small>
-        </div>
-      </div>
-
       <div class="form-group">
         <label class="col-sm-2 control-label" for="id_tank">{{ _('Tank') }}</label>
         <div class="col-sm-4">
@@ -250,52 +242,27 @@
               <li class="orange">1/2</li>
             </ul>
             <input class="slider-input"
-               type="range"
-               min="0"
-               max="1"
-               id="slider"
-               step="0.01"
-               value="{{ form.tank.value }}"
-               data-orientation="horizontal">
+                   type="range"
+                   name="tank" 
+                   min="0"
+                   max="1"
+                   id="slider"
+                   step="0.05"
+                   value="{{ form.tank.value }}"
+                   data-orientation="horizontal">
           </div>
-          <!-- <img class="logo-header" src="/static/images/ranges.png"> -->
         </div>
-        <div class="col-sm-2">
-          <input id="rango_valor" name="tank" style="display: yes;"
-                 value="{{ form.tank.value }}">
-        </div>
-      
       </div>
       <br>
 
       <script>
+        $( document ).ready(function() {
+
+        $('input[type="range"]').rangeslider({
+          polyfill: false,
+        });
         
-
-$( document ).ready(function() {
-
-$('input[type="range"]').rangeslider({
-  polyfill: false,
-  onSlide: function(position, value) {
-    $( "#rango_valor" ).val( value);
-  },
-});
-
-});
-        <!-- var handle = $( "#custom-handle" ); -->
-        <!-- $( "#slider" ).slider({ -->
-        <!--     max: 1, -->
-        <!--     min: 0, -->
-        <!--     step: 0.05, -->
-        <!--     value: {{ form.tank.value }}, -->
-        <!--     animate: "fast", -->
-        <!--     create: function() { -->
-        <!--       handle.text({{ form.tank.value }}); -->
-        <!--     }, -->
-        <!--     slide: function( event, ui ) { -->
-        <!--       handle.text( ui.value ); -->
-        <!--       $( "#rango_valor" ).val( ui.value); -->
-        <!--     } -->
-        <!-- }); -->
+        });
       </script>
       
       <div class="form-group" title="{{ _('Observations') }}">
