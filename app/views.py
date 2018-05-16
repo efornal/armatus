@@ -52,7 +52,6 @@ def sanitize_checks_create_params(request):
     try:
         params['user'] = request.user.pk
         params['start_time'] = datetime.now().strftime('%H:%M')
-        params['tank'] = float(clean_tank_value)
     except Exception, e:
         logging.error('ERROR Exception',e)
     return params
@@ -63,7 +62,7 @@ def checks_create(request):
     params = sanitize_checks_create_params(request)
     form = CheckForm(params)
     context = {}
-
+    logging.warning(params)
     if form.is_valid():
         context.update({'form': form,})
         try:

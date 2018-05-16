@@ -43,7 +43,9 @@ class Check(models.Model):
     voltage_3 = models.IntegerField(
         null=False,
         verbose_name=_('voltage_3'))
-    tank = models.FloatField(
+    tank = models.DecimalField(
+        max_digits=38,
+        decimal_places=3,
         null=False,
         verbose_name=_('tank'))
     observations = models.TextField(

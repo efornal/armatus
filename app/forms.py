@@ -10,11 +10,6 @@ from django.contrib.auth.models import User
 from durationfield.forms import DurationField as FDurationField
 from django.conf import settings
 
-def clean_tank_value(value):
-    return value.replace('[','') \
-                .replace(']','') \
-                .replace('u','') \
-                .replace("'","") 
 
 class CheckForm(forms.ModelForm):
     start_time = forms.TimeField(
@@ -38,11 +33,13 @@ class CheckForm(forms.ModelForm):
     voltage_3 = forms.IntegerField(
         required=True,
         label=_('voltage_3'))
-    tank = forms.MultipleChoiceField(
+    tank = forms.DecimalField(
         required=True,
-        widget=forms.CheckboxSelectMultiple,
-        choices=settings.TANK_FUEL_LEVEL_CHOICES,
-    )
+        max_value=1,
+        min_value=0,
+        max_digits=3,
+        decimal_places=3,
+        label=_('tank'))
     user = forms.ModelChoiceField(
         queryset=User.objects.all(),
         to_field_name = "id",
@@ -55,11 +52,6 @@ class CheckForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super(CheckForm, self).clean()
-
-    def clean_tank(self):
-        value = self.cleaned_data.get('tank')
-        value = clean_tank_value(value[0])
-        return value
 
     class Meta:
         model = Check
