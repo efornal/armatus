@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 11:32-0300\n"
+"POT-Creation-Date: 2018-05-18 09:45-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,209 +18,238 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: app/forms.py:22 app/models.py:26
+#: app/forms.py:17 app/models.py:26
 msgid "start_time"
 msgstr "inicio"
 
-#: app/forms.py:25 app/models.py:30
+#: app/forms.py:20 app/models.py:30
 msgid "end_time"
 msgstr "fin"
 
-#: app/forms.py:28 app/models.py:33
+#: app/forms.py:23 app/models.py:33
 msgid "operating_hours"
 msgstr "horas de función"
 
-#: app/forms.py:31 app/models.py:36
+#: app/forms.py:26 app/models.py:36
 msgid "starts"
 msgstr "arranques"
 
-#: app/forms.py:34 app/models.py:39
+#: app/forms.py:29 app/models.py:39
 msgid "voltage_1"
 msgstr "voltage 1"
 
-#: app/forms.py:37 app/models.py:42
+#: app/forms.py:32 app/models.py:42
 msgid "voltage_2"
 msgstr "voltage 2"
 
-#: app/forms.py:40 app/models.py:45
+#: app/forms.py:35 app/models.py:45
 msgid "voltage_3"
 msgstr "voltage 3"
 
-#: app/forms.py:50 app/models.py:17 app/models.py:81
-msgid "user"
-msgstr "usuario"
-
-#: app/forms.py:54 app/models.py:52 app/models.py:126
-msgid "observations"
-msgstr "observaciones"
-
-#: app/models.py:20 app/models.py:84
-msgid "created_at"
-msgstr "creado"
-
-#: app/models.py:23 app/models.py:87
-msgid "updated_at"
-msgstr "actualizado"
-
-#: app/models.py:48
+#: app/forms.py:42 app/models.py:50
 msgid "tank"
 msgstr "Tanque"
 
-#: app/models.py:56
+#: app/forms.py:47 app/models.py:17 app/models.py:83
+msgid "user"
+msgstr "usuario"
+
+#: app/forms.py:51 app/models.py:54 app/models.py:128
+msgid "observations"
+msgstr "observaciones"
+
+#: app/models.py:20 app/models.py:86
+msgid "created_at"
+msgstr "creado"
+
+#: app/models.py:23 app/models.py:89
+msgid "updated_at"
+msgstr "actualizado"
+
+#: app/models.py:58
 msgid "Check"
 msgstr "Verificación"
 
-#: app/models.py:57 templates/base.html:88
+#: app/models.py:59 templates/base.html:98
 msgid "Checks"
 msgstr "Verificaciones"
 
-#: app/models.py:90
+#: app/models.py:92
 msgid "hours"
 msgstr "horas"
 
-#: app/models.py:95
+#: app/models.py:97
 msgid "oil_type"
 msgstr "tipo de combustible"
 
-#: app/models.py:98
+#: app/models.py:100
 msgid "oil"
 msgstr "aceite"
 
-#: app/models.py:101
+#: app/models.py:103
 msgid "oil_filter"
 msgstr "filtro de aceite"
 
-#: app/models.py:104
+#: app/models.py:106
 msgid "fuel"
 msgstr "combustible"
 
-#: app/models.py:107
+#: app/models.py:109
 msgid "fuel_filter"
 msgstr "filtro de combustible"
 
-#: app/models.py:110
+#: app/models.py:112
 msgid "air_filter"
 msgstr "filtro de aire"
 
-#: app/models.py:113
+#: app/models.py:115
 msgid "refrigerant"
 msgstr "refrigerante"
 
-#: app/models.py:116
+#: app/models.py:118
 msgid "battery"
 msgstr "batería"
 
-#: app/models.py:119
+#: app/models.py:121
 msgid "next_service_date"
 msgstr "Fecha próximo servicio"
 
-#: app/models.py:122
+#: app/models.py:124
 msgid "next_service_hours"
 msgstr "Horas próximo servicio"
 
-#: app/models.py:130
+#: app/models.py:132
 msgid "Service"
 msgstr "Servicio"
 
-#: app/models.py:131 templates/base.html:103
+#: app/models.py:133 templates/base.html:113
 msgid "Services"
 msgstr "Servicios"
 
-#: app/views.py:72
+#: app/views.py:91
 msgid "msg_check_created"
 msgstr "La nueva verificación se agregó correctamente"
 
-#: armatus/settings.py:38
-msgid "empty"
-msgstr "Vacío"
-
-#: armatus/settings.py:46
-msgid "full"
-msgstr "Completo"
-
-#: armatus/settings.py:147 templates/base.html:70 templates/base.html:75
+#: armatus/settings.py:137 templates/base.html:76 templates/base.html:81
 msgid "Spanish"
 msgstr "Español"
 
-#: armatus/settings.py:148 templates/base.html:71 templates/base.html:77
+#: armatus/settings.py:138 templates/base.html:77 templates/base.html:83
 msgid "English"
 msgstr "Ingles"
 
-#: templates/base.html:46 templates/base.html:49 templates/base.html:63
+#: templates/base.html:52 templates/base.html:55 templates/base.html:69
 msgid "Go_home"
 msgstr "Ir inicio"
 
-#: templates/base.html:64
+#: templates/base.html:70
 msgid "Home"
 msgstr "Inicio"
 
-#: templates/base.html:68
+#: templates/base.html:74
 msgid "language"
 msgstr "idioma"
 
-#: templates/base.html:86 templates/base.html:101 templates/base.html:116
+#: templates/base.html:91 templates/base.html:92
+msgid "Dashboard"
+msgstr "Panel de control"
+
+#: templates/base.html:96 templates/base.html:111 templates/base.html:126
 #: templates/registration/login.html:38
 msgid "username"
 msgstr "usuario"
 
-#: templates/base.html:92 templates/index.html:64
+#: templates/base.html:102 templates/checks/index.html:64
 msgid "New_check"
 msgstr "Nueva verificación"
 
-#: templates/base.html:94
+#: templates/base.html:104
 msgid "See_checks"
 msgstr "Ver verificaciones"
 
-#: templates/base.html:107 templates/services/index.html:53
+#: templates/base.html:117 templates/services/index.html:53
 msgid "New_service"
 msgstr "Nuevo servicio"
 
-#: templates/base.html:109
+#: templates/base.html:119
 msgid "See_services"
 msgstr "Ver servicios"
 
-#: templates/base.html:122 templates/base.html:126
+#: templates/base.html:132 templates/base.html:136
 msgid "Close_session"
 msgstr "Cerrar sesión"
 
-#: templates/base.html:132 templates/registration/login.html:33
+#: templates/base.html:142 templates/registration/login.html:33
 #: templates/registration/login.html:50
 msgid "Init_session"
 msgstr "Iniciar sesión"
 
-#: templates/checks/new.html:10
-msgid "Checks_request"
-msgstr "Nueva verificación"
+#: templates/checks/index.html:12 templates/services/index.html:12
+msgid "Created_at"
+msgstr "Creado"
 
-#: templates/checks/new.html:12 templates/checks/show.html:11
-msgid "Start_title"
+#: templates/checks/index.html:13 templates/checks/show.html:44
+msgid "Start_time"
 msgstr "Inicio"
 
-#: templates/checks/new.html:13 templates/checks/show.html:12
-#: templates/index.html:15
+#: templates/checks/index.html:14
+msgid "End_time"
+msgstr "Fin"
+
+#: templates/checks/index.html:15 templates/checks/new.html:11
+#: templates/checks/show.html:12 templates/dashboard.html:38
 msgid "Starts"
 msgstr "Arranques"
 
-#: templates/checks/new.html:21 templates/checks/show.html:21
-#: templates/index.html:16
+#: templates/checks/index.html:16 templates/checks/new.html:42
+#: templates/checks/show.html:21 templates/dashboard.html:29
 msgid "Operating_hours"
 msgstr "Horas de operación"
 
-#: templates/checks/new.html:48 templates/checks/show.html:61
-msgid "Voltages"
-msgstr "Voltajes"
+#: templates/checks/index.html:17
+msgid "Voltage_1"
+msgstr "V.1"
 
-#: templates/checks/new.html:72 templates/checks/show.html:85
-#: templates/index.html:20
+#: templates/checks/index.html:18
+msgid "Voltage_2"
+msgstr "V.2"
+
+#: templates/checks/index.html:19
+msgid "Voltage_3"
+msgstr "V.3"
+
+#: templates/checks/index.html:20 templates/checks/new.html:145
+#: templates/checks/show.html:85 templates/dashboard.html:20
 msgid "Tank"
 msgstr "Tanque"
 
-#: templates/checks/new.html:82 templates/checks/new.html:83
+#: templates/checks/index.html:34
+msgid "Finalize"
+msgstr "Finalizar"
+
+#: templates/checks/index.html:57 templates/services/index.html:46
+msgid "withouth_results"
+msgstr "Sin resultados"
+
+#: templates/checks/new.html:9
+msgid "Checks_request"
+msgstr "Nueva verificación"
+
+#: templates/checks/new.html:10 templates/checks/show.html:11
+msgid "Start_title"
+msgstr "Inicio"
+
+#: templates/checks/new.html:70 templates/checks/show.html:61
+#: templates/dashboard.html:44
+msgid "Voltages"
+msgstr "Voltajes"
+
+#: templates/checks/new.html:193 templates/checks/new.html:194
 #: templates/checks/show.html:93 templates/checks/show.html:94
 msgid "Observations"
 msgstr "Observaciones"
 
-#: templates/checks/new.html:93
+#: templates/checks/new.html:203
 msgid "Send_application"
 msgstr "Guardar"
 
@@ -232,10 +261,6 @@ msgstr "Ver verificaciones"
 msgid "Date"
 msgstr "Fecha"
 
-#: templates/checks/show.html:44 templates/index.html:13
-msgid "Start_time"
-msgstr "Inicio"
-
 #: templates/checks/show.html:51
 msgid "End"
 msgstr "Fin"
@@ -244,33 +269,17 @@ msgstr "Fin"
 msgid "Back"
 msgstr "Volver"
 
-#: templates/index.html:12 templates/services/index.html:12
-msgid "Created_at"
-msgstr "Creado"
+#: templates/dashboard.html:11
+msgid "Last_state"
+msgstr "Último estado"
 
-#: templates/index.html:14
-msgid "End_time"
-msgstr "Fin"
+#: templates/dashboard.html:57
+msgid "Tests_performed"
+msgstr "Pruebas realizadas"
 
-#: templates/index.html:17
-msgid "Voltage_1"
-msgstr "V.1"
-
-#: templates/index.html:18
-msgid "Voltage_2"
-msgstr "V.2"
-
-#: templates/index.html:19
-msgid "Voltage_3"
-msgstr "V.3"
-
-#: templates/index.html:34
-msgid "Finalize"
-msgstr "Finalizar"
-
-#: templates/index.html:57 templates/services/index.html:46
-msgid "withouth_results"
-msgstr "Sin resultados"
+#: templates/dashboard.html:63
+msgid "Next_service"
+msgstr "Próximo servicio"
 
 #: templates/msg_logout.html:6
 msgid "logout_message_title"
@@ -315,6 +324,12 @@ msgstr "Próximo servicio (hs)"
 #: templates/services/index.html:22
 msgid "Next_service_date"
 msgstr "Próximo servicio"
+
+#~ msgid "empty"
+#~ msgstr "Vacío"
+
+#~ msgid "full"
+#~ msgstr "Completo"
 
 #~ msgid "Oil_filter"
 #~ msgstr "F. aceite"
