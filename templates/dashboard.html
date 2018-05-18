@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+
+<div class="bs-docs-section" style="margin-left:5%">
+
+
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>{{ _('Last_state') }}</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="bs-component">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ _('Tank') }}
+            <span class="badge " style="background-color:{{ tank_color }}">
+              {{ remaining_hours }} hs.
+            </span>
+            <span class="badge " style="background-color:{{ tank_color }}">
+              {% widthratio check.tank 1 100 %} %
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ _('Operating_hours') }} 
+            <span class="badge badge-primary badge-pill">
+              {{ check.operating_hours|default:'' }}
+            </span>
+            <span class="badge badge-primary badge-pill">
+              {{ check.operation_hours|default:'' }}
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ _('Starts') }}
+            <span class="badge badge-primary badge-pill">
+              {{ check.starts|default:'' }}
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ _('Voltages') }}
+            <span class="badge badge-primary badge-pill">
+              {{ check.voltage_1|default:'' }}
+            </span>
+            <span class="badge badge-primary badge-pill">
+              {{ check.voltage_2|default:'' }}
+            </span>
+            <span class="badge badge-primary badge-pill">
+              {{ check.voltage_3|default:'' }}
+            </span>
+
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ _('Tests_performed') }}
+            <span class="badge badge-primary badge-pill">
+              {{ tests_performed|default:'' }}
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ _('Next_service') }}
+            <span class="badge badge-primary badge-pill">
+              {{ service.next_service_hours | default:'' }} hs.
+            </span>
+            <span class="badge badge-primary badge-pill">
+              {{ service.next_service_date | default:'' }} 
+            </span>
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+{% endblock %}
+

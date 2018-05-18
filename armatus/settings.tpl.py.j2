@@ -186,6 +186,13 @@ LDAP_GROUP  = "{{ ldap_group }}"
 #
 # =================================/
 
+# =================================\
+# FUEL_CONSUMPTION_COEFFICIENT = h/c
+# h = hours performed by tank capacity
+# c = indicates the size of the tank (coefficient between 0 and 1)
+# ej: 1/4 tank every 10hs => FUEL_CONSUMPTION_COEFFICIENT = 10/0.25 = 40
+FUEL_CONSUMPTION_COEFFICIENT = {{ fuel_consumption_coefficient }}
+# =================================/
 
 # =================================\
 # django ldap configuration

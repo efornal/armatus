@@ -12,7 +12,7 @@ from django.db import transaction
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist
-
+from django.conf import settings
 
 def set_language(request, lang='es'):
     if 'lang' in request.GET:
@@ -22,6 +22,26 @@ def set_language(request, lang='es'):
     logging.info("Language changed by the user to '{}'".format(lang))
     return redirect('index')
 
+@login_required
+def dashboard(request):
+    fcc = settings.FUEL_CONSUMPTION_COEFFICIENT
+    check = Check.objects.all().order_by('-created_at').first()
+    service = Service.objects.all().order_by('-created_at').first()
+    tests_performed = Check.objects.all().count()
+    remaining_hours = round(check.tank*fcc,1)
+    if check.tank <= 0.1:
+        tank_color="#CD0200"
+    elif check.tank > 0.1 and check.tank < 0.3:
+        tank_color="#D47500"
+    else:
+        tank_color="#3399f3"
+
+    context = {'check': check,
+               'service': service,
+               'tank_color': tank_color,
+               'tests_performed': tests_performed,
+               'remaining_hours': remaining_hours}
+    return render(request, 'dashboard.html', context)
 
 @login_required
 def checks_new(request):
@@ -102,13 +122,16 @@ def checks_finalize(request, pk):
         logging.error(e)
     return redirect('index')
 
-
 @login_required
 def index(request):
+    return redirect('dashboard')
+
+@login_required
+def checks_index(request):
     context={}
     checks = Check.objects.all().order_by('-created_at')
     context = {'checks': checks}
-    return render(request, 'index.html', context)
+    return render(request, 'checks/index.html', context)
 
 
 @login_required

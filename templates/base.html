@@ -21,6 +21,7 @@
     <link href="{% static 'rangeslider/rangeslider.css' %}" type="text/css" media="all" rel="stylesheet" />
     <link href="{% static 'css/rangeslider.css' %}" type="text/css" media="all" rel="stylesheet" />
 
+    
     {% endblock %}
     {% load bootstrap_themes %}
     {% bootstrap_styles theme='spacelab' type='css' %}
@@ -86,6 +87,10 @@
                
           <ul class="nav navbar-nav navbar-right">
             {% if user.username %}
+            <li>
+              <a href="{% url 'dashboard' %}" title="{{ _('Dashboard') }}">
+                <i class="glyphicon glyphicon-tasks"></i> {{ _('Dashboard') }}</a>
+            </li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"
                  title="{{ _('username') }}">
@@ -95,7 +100,7 @@
               <ul class="dropdown-menu" aria-labelledby="download">
                 <li><a href="{% url 'checks_new' %}"
                        title="">{{ _('New_check') }}</a></li>
-                <li><a href="{% url 'index' %}"
+                <li><a href="{% url 'checks_index' %}"
                        title="">{{ _('See_checks') }}</a></li>
               </ul>
             </li>

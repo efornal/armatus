@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^checks/create/$', views.checks_create, name='checks_create'),
     url(r'^checks/finalize/(?P<pk>\d+)/$', views.checks_finalize, name='checks_finalize'),
     url(r'^checks/show/(?P<pk>\d+)/$', views.checks_show, name='checks_show'),
+    url(r'^checks/index/$', views.checks_index, name='checks_index'),
+    url(r'^dashboard/$', views.dashboard, name='dashboard'),
     url(r'^services/index/$', views.services_index, name='services_index'),
     url(r'^$', views.index, name='index'),
 ]
