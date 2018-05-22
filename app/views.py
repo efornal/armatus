@@ -13,6 +13,7 @@ from django.contrib import messages
 from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
+from datetime import date
 
 def set_language(request, lang='es'):
     if 'lang' in request.GET:
@@ -25,19 +26,34 @@ def set_language(request, lang='es'):
 @login_required
 def dashboard(request):
     fcc = settings.FUEL_CONSUMPTION_COEFFICIENT
+    th_warning_tank = settings.THRESHOLD_WARNING_TANK
+    th_danger_tank  = settings.THRESHOLD_DANGER_TANK
+    th_warning_service = settings.THRESHOLD_WARNING_SERVICE
+    th_danger_service  = settings.THRESHOLD_DANGER_SERVICE
+    
     check = Check.objects.all().order_by('-created_at').first()
     service = Service.objects.all().order_by('-created_at').first()
     tests_performed = Check.objects.all().count()
     remaining_hours = round(check.tank*fcc,1)
-    if check.tank <= 0.1:
-        tank_color="#CD0200"
-    elif check.tank > 0.1 and check.tank < 0.3:
-        tank_color="#D47500"
-    else:
-        tank_color="#3399f3"
 
+    next_service_diff = date.today() - service.next_service_date
+
+    tank_color="#3399f3"
+    if check.tank < th_warning_tank:
+        tank_color="#D47500"
+    if check.tank <= th_danger_tank:
+        tank_color="#CD0200"
+    
+    service_color = "#3399f3"        
+    if next_service_diff.days < th_warning_service:
+        service_color = "#D47500"
+    if next_service_diff.days < th_danger_service:
+        service_color = "#CD0200"
+        
     context = {'check': check,
                'service': service,
+               'service_color': service_color,
+               'next_service_diff': next_service_diff,
                'tank_color': tank_color,
                'tests_performed': tests_performed,
                'remaining_hours': remaining_hours}

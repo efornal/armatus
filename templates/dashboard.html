@@ -59,12 +59,13 @@
               {{ tests_performed|default:'' }}
             </span>
           </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <li class="list-group-item d-flex justify-content-between align-items-center"
+              title="{{ _('Next_service') }}: {{ next_service_diff.days  | default:'' }} días">
             {{ _('Next_service') }}
-            <span class="badge badge-primary badge-pill">
+            <span class="badge badge-primary badge-pill" style="background-color:{{ service_color }}">
               {{ service.next_service_hours | default:'' }} hs.
             </span>
-            <span class="badge badge-primary badge-pill">
+            <span class="badge badge-primary badge-pill" style="background-color:{{ service_color }}">
               {{ service.next_service_date | default:'' }} 
             </span>
           </li>

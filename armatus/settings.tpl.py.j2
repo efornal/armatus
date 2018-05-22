@@ -192,6 +192,23 @@ LDAP_GROUP  = "{{ ldap_group }}"
 # c = indicates the size of the tank (coefficient between 0 and 1)
 # ej: 1/4 tank every 10hs => FUEL_CONSUMPTION_COEFFICIENT = 10/0.25 = 40
 FUEL_CONSUMPTION_COEFFICIENT = {{ fuel_consumption_coefficient }}
+
+#
+# Being the range of the tank [0-1], the threshold indicates the value
+# from which it is considered warning or danger
+# ex. THRESHOLD_WARNING_TANK = 0.3
+#     THRESHOLD_DANGER_TANK  = 0.1
+# then the range is:
+#       [0,   0.1]   danger
+#       [0.1, 0.3]   warning
+#       [0.   3.1]   normal
+THRESHOLD_WARNING_TANK = {{ threshold_warning_tank }}
+THRESHOLD_DANGER_TANK = {{ threshold_danger_tank }}
+#
+# Number of days remaining for the next services considered as danger or warning
+THRESHOLD_WARNING_SERVICE = {{ threshold_warning_service }}
+THRESHOLD_DANGER_SERVICE = {{ threshold_danger_service }}
+
 # =================================/
 
 # =================================\
