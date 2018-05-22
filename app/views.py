@@ -30,25 +30,29 @@ def dashboard(request):
     th_danger_tank  = settings.THRESHOLD_DANGER_TANK
     th_warning_service = settings.THRESHOLD_WARNING_SERVICE
     th_danger_service  = settings.THRESHOLD_DANGER_SERVICE
-    
     check = Check.objects.all().order_by('-created_at').first()
-    service = Service.objects.all().order_by('-created_at').first()
+    service = Service.objects.filter(next_service_date__gte=date.today()) \
+                             .order_by('-created_at').first()
     tests_performed = Check.objects.all().count()
     remaining_hours = round(check.tank*fcc,1)
-
-    next_service_diff = date.today() - service.next_service_date
 
     tank_color="#3399f3"
     if check.tank < th_warning_tank:
         tank_color="#D47500"
     if check.tank <= th_danger_tank:
         tank_color="#CD0200"
-    
-    service_color = "#3399f3"        
-    if next_service_diff.days < th_warning_service:
-        service_color = "#D47500"
-    if next_service_diff.days < th_danger_service:
-        service_color = "#CD0200"
+
+    service_color = "#3399f3"
+    next_service_diff = None
+    if service:
+        next_service_diff = service.next_service_date - date.today()
+        if next_service_diff.days < th_warning_service:
+            service_color = "#D47500"
+        if next_service_diff.days < th_danger_service:
+            service_color = "#CD0200"
+        if next_service_diff.days < 0:
+            service_color = "#777"
+
         
     context = {'check': check,
                'service': service,
