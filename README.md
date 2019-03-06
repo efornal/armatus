@@ -1,6 +1,7 @@
 # armatus
 Allows to keep a record of variables of the useful life of a generator
 
+
 ### Package Installation debian stretch
 ```bash
 sudo apt-get install python-dev
@@ -21,5 +22,5 @@ sudo apt-get install libgirepository1.0-dev
 
 ### Python lib Installation
 ```bash
-pip install -r requieremens.txt
+pip install -r requirements.txt
 ```
