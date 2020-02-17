@@ -102,11 +102,11 @@ def checks_create(request):
     params = sanitize_checks_create_params(request)
     form = CheckForm(params)
     context = {}
-    logging.warning(params)
     if form.is_valid():
         context.update({'form': form,})
         try:
             logging.warning("creating new check..")
+            logging.info(params)
             check = form.save()
             messages.info(request, _('msg_check_created'))
             return redirect('index')

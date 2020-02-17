@@ -3,8 +3,7 @@ from django.conf.urls import include
 from django.conf.urls import url
 from . import views
 from django.contrib.auth import views as auth_views
-
-
+from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
@@ -18,5 +17,6 @@ urlpatterns = [
     url(r'^checks/index/$', views.checks_index, name='checks_index'),
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
     url(r'^services/index/$', views.services_index, name='services_index'),
+    url(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
     url(r'^$', views.index, name='index'),
 ]
