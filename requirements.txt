@@ -11,7 +11,7 @@ django-bootstrap-ui==0.5.1
 django-datetime-widget==0.9.3
 django-durationfield==0.5.5
 django-extensions==2.2.8
-django-jquery==3.1.0
+django-jquery==2.2.4
 django-jquery-ui==1.11.4.1
 django-range-slider==0.2.4
 django-suit==0.2.28
