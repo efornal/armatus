@@ -59,7 +59,7 @@ class Check(models.Model):
         verbose_name_plural = _('Checks')
 
     def __unicode__(self):
-        return unicode(format(self.created_at, "%d-%m-%Y, %H:%S"))
+        return str(format(self.created_at, "%d-%m-%Y, %H:%S"))
 
     def __str__(self):
         return format(self.created_at, "%d-%m-%Y, %H:%S")
@@ -133,7 +133,7 @@ class Service(models.Model):
         verbose_name_plural = _('Services')
 
     def __unicode__(self):
-        return unicode(format(self.created_at, "%d-%m-%Y, %H:%S"))
+        return str(format(self.created_at, "%d-%m-%Y, %H:%S"))
 
     def __str__(self):
         return format(self.created_at, "%d-%m-%Y, %H:%S")

@@ -68,7 +68,7 @@ def checks_new(request):
     form = CheckForm()
     try:
         latest_check = Check.objects.latest('created_at')
-        clean_tank_value = unicode(latest_check.tank).replace(",",".")
+        clean_tank_value = str(latest_check.tank).replace(',','.')
         defaults = {
             'tank': clean_tank_value,
             'operating_hours': latest_check.operation_hours(),
@@ -78,9 +78,9 @@ def checks_new(request):
             'voltage_3': latest_check.voltage_3
         }
         form = CheckForm(initial=defaults)
-    except ObjectDoesNotExist, e:
+    except ObjectDoesNotExist as e:
         form = CheckForm()
-    except Exception, e:
+    except Exception as e:
         logging.error(e)
 
     context = {'form': form,}
@@ -92,7 +92,7 @@ def sanitize_checks_create_params(request):
     try:
         params['user'] = request.user.pk
         params['start_time'] = datetime.now().strftime('%H:%M')
-    except Exception, e:
+    except Exception as e:
         logging.error('ERROR Exception',e)
     return params
 
@@ -134,7 +134,7 @@ def checks_finalize(request, pk):
     try:
         check = Check.objects.get(pk=pk)
         if not check.end_time:
-            check.end_time = unicode(datetime.now().strftime('%H:%M'))
+            check.end_time = str(datetime.now().strftime('%H:%M'))
             check.save(update_fields=["end_time"])
         else:
             logging.error('The check {} has already been finalized'.format(pk))
