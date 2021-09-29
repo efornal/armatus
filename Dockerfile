@@ -16,24 +16,6 @@ RUN pip install --upgrade pip
 WORKDIR /srv/armatus
 EXPOSE 8000
 
-# COPY app app
-# COPY armatus armatus
-# COPY armatus/settings.tpl.py.env armatus/settings.py
-# COPY LICENSE .
-# COPY locale locale
-# COPY manage.py .
-# COPY README.md .
-# COPY static static
-# COPY templates templates
-# #COPY docker/entrypoint.sh entrypoint.sh
-# COPY .env.dev .env
-
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-
-#RUN chmod +x /srv/armatus/entrypoint.sh
-
-#ENTRYPOINT ["/srv/armatus/entrypoint.sh"]
-
-#CMD ["gunicorn", "armatus.wsgi:application", "--bind 0.0.0.0:8000"]
 
