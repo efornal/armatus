@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  
+  db:
+    image: postgres:11.12-buster
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d
+  
+  armatus:
+    restart: always
+    build: .
+    #image: armatus:latest
+    command:
+      - /bin/bash
+      - -c
+      - |
+        python manage.py migrate
+        python manage.py compilemessages 
+        python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - .env.dev
+    volumes:
+      - .:/srv/armatus
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
+    external: true
