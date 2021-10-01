@@ -15,6 +15,7 @@ RUN apt-get install -y python-dev python-pip python-apt python-ldap \
 RUN pip install --upgrade pip
 WORKDIR /srv/armatus
 EXPOSE 8000
+
 COPY app app
 COPY armatus armatus
 COPY armatus/settings.tpl.py.env armatus/settings.py
@@ -24,7 +25,6 @@ COPY manage.py .
 COPY README.md .
 COPY static static
 COPY templates templates
-COPY docker/entrypoint.sh entrypoint.sh
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
