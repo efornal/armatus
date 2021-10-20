@@ -14,7 +14,8 @@ class Check(models.Model):
         User,
         null=False,
         default=None,
-        verbose_name=_('user'))
+        verbose_name=_('user'),
+        on_delete = models.CASCADE)
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name=_('created_at'))
@@ -80,7 +81,8 @@ class Service(models.Model):
         User,
         null=False,
         default=None,
-        verbose_name=_('user'))
+        verbose_name=_('user'),
+        on_delete = models.CASCADE)
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name=_('created_at'))

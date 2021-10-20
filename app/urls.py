@@ -6,8 +6,8 @@ from django.contrib.auth import views as auth_views
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
+    url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^en/$', views.index, name='index'),
     url(r'^lang/(?P<lang>\w+)/$', views.set_language, name='set_language'),
     url(r'^checks/new/$', views.checks_new, name='checks_new'),
