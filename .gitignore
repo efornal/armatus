@@ -103,3 +103,5 @@ ENV/
 
 # environ
 .env.*
+
+settings.py
