@@ -35,4 +35,3 @@ docker-compose up
 
 ### Configuration
 * Copy .env.tpl to .env.dev and configure with custom values
-* Copy armatus/settings.tpl.py.env to armatus/settings.py and configure with different values if necessary
