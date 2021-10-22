@@ -3,7 +3,7 @@ version: "3"
 services:
   
   db:
-    image: postgres:11.12-buster
+    image: postgres:11.11-alpine
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
@@ -13,8 +13,8 @@ services:
   
   armatus:
     restart: always
-    build: .
-#    image: armatus:latest
+#    build: .
+    image: armatus:latest
     command:
      - /bin/bash
      - -c

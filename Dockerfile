@@ -1,6 +1,6 @@
 # docker build -t armatus:latest .
 
-FROM python:bullseye
+FROM python:3.9-slim-bullseye
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED 1
 
@@ -28,3 +28,4 @@ COPY templates templates
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+RUN apt-get clean && apt-get autoremove
