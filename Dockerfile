@@ -30,5 +30,9 @@ COPY templates templates
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 RUN apt-get clean && apt-get autoremove
-ENTRYPOINT ["/bin/bash"]
 
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["gunicorn", "armatus.wsgi:application", "--bind 0.0.0.0:8000"]
