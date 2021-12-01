@@ -1,7 +1,8 @@
-#!/usr/bin/env bash
-set -e
+#!/bin/bash
 
+#python manage.py migrate --database=db_owner
 python manage.py compilemessages
 python manage.py collectstatic --noinput
 
-exec "$@"
+echo "Running command '$*'"
+exec /bin/bash -c "$*"
