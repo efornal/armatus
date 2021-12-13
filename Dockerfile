@@ -19,7 +19,6 @@ EXPOSE 8000
 
 COPY app app
 COPY armatus armatus
-COPY armatus/settings.tpl.py.env armatus/settings.py
 COPY LICENSE .
 COPY locale locale
 COPY manage.py .
