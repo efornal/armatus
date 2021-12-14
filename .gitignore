@@ -105,3 +105,7 @@ ENV/
 .env.*
 
 settings.py
+
+
+db
+shared
