@@ -149,7 +149,7 @@ LANGUAGES = (
 )
 
 LOCALE_PATHS = [
-    os.path.join('/srv/armatus/shared/app/locale/'),
+    os.path.join(env('CONTEXT_PATH'), '/shared/app/locale/'),
     os.path.join(BASE_DIR, 'locale/'),
 ]
 
@@ -163,9 +163,9 @@ USE_TZ = True
 
 DEFAULT_CHARSET = 'utf-8'
 
-LOGIN_URL = "/login"
+LOGIN_URL = env('LOGIN_URL')
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = env('LOGIN_REDIRECT_URL')
 
 STATIC_ROOT = env('STATIC_ROOT')
 STATIC_URL = env('STATIC_URL')

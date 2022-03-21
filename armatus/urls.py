@@ -16,16 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import ugettext_lazy as _
-
-from django.conf.urls import url
-from django.contrib import admin
-from django.conf.urls import include
+from django.urls import include, path
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('app.urls')),
+    path('generador/', include('app.urls')),
+    path('admin/', admin.site.urls),
 ]
 
 urlpatterns += i18n_patterns(
-    url(r'^', include('app.urls')),
+    path('generador/', include('app.urls')),
 )

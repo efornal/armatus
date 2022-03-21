@@ -14,6 +14,14 @@ MANAGERS=(("Manager Name", "manager@site.com"),)
 
 TIME_ZONE=America/Argentina/Buenos_Aires
 
+CONTEXT_ROOT=/generador
+
+CONTEXT_PATH=/srv/armatus
+
+LOGIN_URL=/generador/login
+
+LOGIN_REDIRECT_URL=/generador
+
 STATIC_ROOT=/srv/armatus/shared/static
 
 STATIC_URL=/static/
