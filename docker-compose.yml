@@ -14,7 +14,7 @@ services:
   armatus:
     restart: always
 #    build: .
-    image: armatus:latest
+    image: armatus:whitenoise
     command: python manage.py runserver 0.0.0.0:8000
     env_file:
       - .env.dev
