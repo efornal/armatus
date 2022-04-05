@@ -7,7 +7,7 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('en/', views.index, name='index'),
+#    path('en/', views.index, name='index'),
     path('lang/<str:lang>/', views.set_language, name='set_language'),
     path('checks/new/', views.checks_new, name='checks_new'),
     path('checks/create/', views.checks_create, name='checks_create'),
