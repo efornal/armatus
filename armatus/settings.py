@@ -11,22 +11,22 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import environ
+#import environ
 import ldap
 from django.utils.translation import ugettext_lazy as _
 from django.conf.locale.es import formats as es_formats
     
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-env = environ.Env(
+#env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
-)
-environ.Env.read_env()
+#    DEBUG=(bool, False)
+#)
+#environ.Env.read_env()
 
-BASE_URL = env('BASE_URL')
-APPLICATION_NAME= "Armatus"
-APPLICATION_DESC= "Uso del generador"
+BASE_URL = os.environ.get('BASE_URL')
+APPLICATION_NAME= os.environ.get('APPLICATION_NAME')
+APPLICATION_DESC= os.environ.get('APPLICATION_DESC')
 
 es_formats.DATETIME_FORMAT = "d-m-Y H:i"
 
@@ -34,16 +34,16 @@ es_formats.DATETIME_FORMAT = "d-m-Y H:i"
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
 
-ADMINS=env('ADMINS')
+ADMINS=os.environ.get('ADMINS')
 
-MANAGERS= env('MANAGERS')
+MANAGERS= os.environ.get('MANAGERS')
 
 # Application definition
 
@@ -100,23 +100,23 @@ WSGI_APPLICATION = 'armatus.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-#DATABASES = { 'default': env('DB_DEFAULT'), 'db_owner': env("DB_OWNER") }
+#DATABASES = { 'default': os.environ.get('DB_DEFAULT'), 'db_owner': os.environ.get("DB_OWNER") }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DB_NAME_DEF'),
-        'USER': env('DB_USER_DEF'),
-        'PASSWORD':  env('DB_PASS_DEF'),
-        'PORT': env('DB_PORT_DEF'),
-        'HOST': env('DB_HOST_DEF'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD':  os.environ.get('DB_USER_PASSWORD'),
+        'PORT': os.environ.get('DB_PORT'),
+        'HOST': os.environ.get('DB_HOST'),
     },
     'db_owner': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DB_NAME_OWN'),
-        'USER': env('DB_USER_OWN'),
-        'PASSWORD': env('DB_PASS_OWN'),
-        'PORT': env('DB_PORT_OWN'),
-        'HOST': env('DB_HOST_DEF'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_OWNER'),
+        'PASSWORD': os.environ.get('DB_OWNER_PASSWORD'),
+        'PORT': os.environ.get('DB_PORT'),
+        'HOST': os.environ.get('DB_HOST'),
     },
 }
 
@@ -149,11 +149,11 @@ LANGUAGES = (
 )
 
 LOCALE_PATHS = [
-    os.path.join(env('CONTEXT_PATH'), '/shared/app/locale/'),
+    os.path.join(os.environ.get('CONTEXT_PATH'), '/shared/app/locale/'),
     os.path.join(BASE_DIR, 'locale/'),
 ]
 
-TIME_ZONE = env('TIME_ZONE')
+TIME_ZONE = os.environ.get('TIME_ZONE')
 
 USE_I18N = True
 
@@ -163,12 +163,12 @@ USE_TZ = True
 
 DEFAULT_CHARSET = 'utf-8'
 
-LOGIN_URL = env('LOGIN_URL')
+LOGIN_URL = os.environ.get('LOGIN_URL')
 
-LOGIN_REDIRECT_URL = env('LOGIN_REDIRECT_URL')
+LOGIN_REDIRECT_URL = os.environ.get('LOGIN_REDIRECT_URL')
 
-STATIC_ROOT = env('STATIC_ROOT')
-STATIC_URL = env('STATIC_URL')
+STATIC_ROOT = os.environ.get('STATIC_ROOT')
+STATIC_URL = os.environ.get('STATIC_URL')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
@@ -179,21 +179,19 @@ SUIT_CONFIG = {
     'ADMIN_NAME': APPLICATION_NAME
 }
 
-SESSION_COOKIE_NAME = env('SESSION_COOKIE_NAME')
+SESSION_COOKIE_NAME = os.environ.get('SESSION_COOKIE_NAME')
 SESSION_COOKIE_PATH = "/"
 
 
 # =================================\
 # ldap configuration
-LDAP_SERVER = env('LDAP_SERVER')
-LDAP_DN = env('LDAP_DN')
+LDAP_SERVER = os.environ.get('LDAP_SERVER')
+LDAP_DN = os.environ.get('LDAP_BIND_DN')
 
 # Organizational Unit for Person
-LDAP_PEOPLE = env('LDAP_PEOPLE')
-LDAP_GROUP  = env('LDAP_GROUP')
+LDAP_PEOPLE = os.environ.get('LDAP_PEOPLE')
+LDAP_GROUP  = os.environ.get('LDAP_GROUP')
 
-#LDAP_USERNAME = ""
-#LDAP_PASSWORD = ""
 #
 # =================================/
 
@@ -228,7 +226,7 @@ THRESHOLD_DANGER_SERVICE = 5
 #
 # Ldap Group Type
 from django_auth_ldap.config import LDAPSearch, PosixGroupType
-AUTH_LDAP_GROUP_SEARCH = LDAPSearch("ou={},{}".format(LDAP_GROUP,LDAP_DN),
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch(os.environ.get('LDAP_DN_AUTH_GROUP'),
                                     ldap.SCOPE_SUBTREE, "(objectClass=posixGroup)"
 )
 AUTH_LDAP_GROUP_TYPE =  PosixGroupType()
@@ -246,19 +244,21 @@ AUTH_LDAP_ALWAYS_UPDATE_USER = True
 # Defines the django admin attribute
 # according to whether the user is a member or not in the specified group
 AUTH_LDAP_USER_FLAGS_BY_GROUP = {
-    "is_active": "cn=users,ou={},{}".format(LDAP_GROUP,LDAP_DN),
-    "is_staff": "cn=users,ou={},{}".format(LDAP_GROUP,LDAP_DN),
-    "is_superuser": "cn=admin,ou={},{}".format(LDAP_GROUP,LDAP_DN),
+    "is_active": "cn=users,{}".format(os.environ.get('LDAP_DN_AUTH_GROUP')),
+    "is_staff": "cn=users,{}".format(os.environ.get('LDAP_DN_AUTH_GROUP')),
+    "is_superuser": "cn=admin,{}".format(os.environ.get('LDAP_DN_AUTH_GROUP')),
 }
+
 #
 # Ldap User Auth
 #AUTH_LDAP_BIND_DN = "cn={},{}".format(LDAP_USERNAME,LDAP_DN)
 #AUTH_LDAP_BIND_PASSWORD = LDAP_PASSWORD
 
-AUTH_LDAP_SERVER_URI = LDAP_SERVER
+AUTH_LDAP_SERVER_URI = os.environ.get('LDAP_SERVER')
 
-AUTH_LDAP_USER_SEARCH = LDAPSearch("ou={},{}".format(LDAP_PEOPLE,LDAP_DN),
+AUTH_LDAP_USER_SEARCH = LDAPSearch(os.environ.get('LDAP_DN_AUTH_USERS'),
                                    ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
+
 AUTH_LDAP_USER_ATTR_MAP = {
     "first_name": "givenName",
     "last_name": "sn",
