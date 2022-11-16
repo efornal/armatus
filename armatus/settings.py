@@ -188,11 +188,6 @@ SESSION_COOKIE_PATH = "/"
 LDAP_SERVER = os.environ.get('LDAP_SERVER')
 LDAP_DN = os.environ.get('LDAP_BIND_DN')
 
-# Organizational Unit for Person
-LDAP_PEOPLE = os.environ.get('LDAP_PEOPLE')
-LDAP_GROUP  = os.environ.get('LDAP_GROUP')
-
-#
 # =================================/
 
 # =================================\

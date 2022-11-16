@@ -1,26 +1,15 @@
 ## django configuration
 
 DEBUG=on
-
-BASE_URL=https://base_url
-
-SECRET_KEY=5l4#u+^9(f5ej@=@e!%@hq#xm@kaz0lf-m45z7iesu=w(fdhz9
-
+BASE_URL=https://0.0.0.0:8000
+SECRET_KEY=*********************************
 ALLOWED_HOSTS=['*']
 
-ADMINS=(("admin", "admin@site.com"),)
+ADMINS=(("admin", "admin@domain"),)
 
-MANAGERS=(("Manager Name", "manager@site.com"),)
+MANAGERS=(("Manager", "manager@domain"),)
 
 TIME_ZONE=America/Argentina/Buenos_Aires
-
-CONTEXT_ROOT=/generador
-
-CONTEXT_PATH=/srv/armatus
-
-LOGIN_URL=/generador/login
-
-LOGIN_REDIRECT_URL=/generador
 
 STATIC_ROOT=/srv/armatus/shared/static
 
@@ -29,24 +18,24 @@ STATIC_URL=/static/
 SESSION_COOKIE_NAME=armatussessionid
 
 
-## ldap configuration
-LDAP_SERVER=ldap://ldap.site.com:389
-LDAP_DN=dc=site,dc=com
-# Organizational Unit for Person
-LDAP_PEOPLE=People
-LDAP_GROUP=Group
+LOGIN_URL=/generador/login
+LOGIN_REDIRECT_URL=/generador
+SESSION_COOKIE_NAME=armatussessionid
 
+CONTEXT_ROOT=/generador
+CONTEXT_PATH=/srv/armatus
 
-## database configuration
-# for default user
-DB_NAME_DEF=armatus_db
-DB_USER_DEF=armatus_user
-DB_PASS_DEF=user_password
-DB_HOST_DEF=db
-DB_PORT_DEF=5432
-# for user with privileged access 
-DB_NAME_OWN=armatus_db
-DB_USER_OWN=armatus_owner
-DB_PASS_OWN=owner_password
-DB_HOST_OWN=db
-DB_PORT_OWN=5432
+# ldap configuration
+LDAP_SERVER=ldap://ldap_host:389
+LDAP_BIND_DN=dc=rectorado,dc=unl,dc=edu,dc=ar
+LDAP_DN_AUTH_GROUP=ou=Group,dc=domain
+LDAP_DN_AUTH_USERS=ou=People,dc=domain
+
+DB_NAME=armatus_db
+DB_USER=armatus_user
+DB_USER_PASSWORD=*********
+DB_PORT=5432
+DB_HOST=db
+DB_OWNER=armatus_owner
+DB_OWNER_PASSWORD=*********
+
