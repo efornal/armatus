@@ -149,7 +149,7 @@ LANGUAGES = (
 )
 
 LOCALE_PATHS = [
-    os.path.join(os.environ.get('CONTEXT_PATH'), '/shared/app/locale/'),
+    '/srv/armatus/shared/app/locale/',
     os.path.join(BASE_DIR, 'locale/'),
 ]
 
