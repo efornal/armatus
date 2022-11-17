@@ -102,7 +102,7 @@ ENV/
 
 
 # environ
-.env.*
+.env.dev
 
 settings.py
 
