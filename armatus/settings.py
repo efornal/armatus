@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-#import environ
+
+import ast
+import environ
+import logging
+
 import ldap
 from django.utils.translation import ugettext_lazy as _
 from django.conf.locale.es import formats as es_formats
@@ -29,13 +33,11 @@ APPLICATION_NAME= os.environ.get('APPLICATION_NAME')
 APPLICATION_DESC= os.environ.get('APPLICATION_DESC')
 
 es_formats.DATETIME_FORMAT = "d-m-Y H:i"
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
@@ -149,7 +151,7 @@ LANGUAGES = (
 )
 
 LOCALE_PATHS = [
-    '/srv/armatus/shared/app/locale/',
+    os.path.join(os.environ.get('CONTEXT_PATH'), '/shared/app/locale/'),
     os.path.join(BASE_DIR, 'locale/'),
 ]
 
