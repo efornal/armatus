@@ -146,6 +146,10 @@ def checks_finalize(request, pk):
 def index(request):
     return redirect('dashboard')
 
+def health(request):
+    from django.http import HttpResponse
+    return HttpResponse(status=200)
+
 @login_required
 def checks_index(request):
     context={}
